@@ -1,0 +1,341 @@
+{
+  "passed": true,
+  "scripted_only": true,
+  "model_inference": false,
+  "benchmark": {
+    "ok": true,
+    "config": {
+      "id": "c79bee7f219c4d9cb925cca6b06841e3",
+      "model": "scripted-submit-smoke",
+      "endpoint": "http://127.0.0.1:8008/v1",
+      "tasks": [
+        "train-0000",
+        "train-0001",
+        "train-0008"
+      ],
+      "repetitions": 8,
+      "workers": 8,
+      "evidence": "image",
+      "mode": "evaluation",
+      "runtime_bank_seal": "7b7b54ac532b054c073d55512f7133e51721e5b9a26a586cfd4aa42447e85b71",
+      "created": 1793387521.925097
+    },
+    "running": false,
+    "planned": 24,
+    "completed": 24,
+    "full_repairs": 0,
+    "interrupted": 0,
+    "mean_partial": 0.30647417205983457,
+    "eligible_groups": 3,
+    "mixed_groups": 0,
+    "signal_share": 0.0,
+    "groups": [
+      {
+        "task": "train-0000",
+        "p": 0.0,
+        "mixed": false
+      },
+      {
+        "task": "train-0001",
+        "p": 0.0,
+        "mixed": false
+      },
+      {
+        "task": "train-0008",
+        "p": 0.0,
+        "mixed": false
+      }
+    ],
+    "attempts": [
+      {
+        "task": "train-0000",
+        "repeat": 0,
+        "status": "completed",
+        "success": false,
+        "passed": 76,
+        "total": 129,
+        "steps": 1,
+        "total_return": -0.025
+      },
+      {
+        "task": "train-0000",
+        "repeat": 1,
+        "status": "completed",
+        "success": false,
+        "passed": 76,
+        "total": 129,
+        "steps": 1,
+        "total_return": -0.025
+      },
+      {
+        "task": "train-0000",
+        "repeat": 2,
+        "status": "completed",
+        "success": false,
+        "passed": 76,
+        "total": 129,
+        "steps": 1,
+        "total_return": -0.025
+      },
+      {
+        "task": "train-0000",
+        "repeat": 3,
+        "status": "completed",
+        "success": false,
+        "passed": 76,
+        "total": 129,
+        "steps": 1,
+        "total_return": -0.025
+      },
+      {
+        "task": "train-0000",
+        "repeat": 4,
+        "status": "completed",
+        "success": false,
+        "passed": 76,
+        "total": 129,
+        "steps": 1,
+        "total_return": -0.025
+      },
+      {
+        "task": "train-0000",
+        "repeat": 5,
+        "status": "completed",
+        "success": false,
+        "passed": 76,
+        "total": 129,
+        "steps": 1,
+        "total_return": -0.025
+      },
+      {
+        "task": "train-0000",
+        "repeat": 6,
+        "status": "completed",
+        "success": false,
+        "passed": 76,
+        "total": 129,
+        "steps": 1,
+        "total_return": -0.025
+      },
+      {
+        "task": "train-0000",
+        "repeat": 7,
+        "status": "completed",
+        "success": false,
+        "passed": 76,
+        "total": 129,
+        "steps": 1,
+        "total_return": -0.025
+      },
+      {
+        "task": "train-0001",
+        "repeat": 0,
+        "status": "completed",
+        "success": false,
+        "passed": 0,
+        "total": 121,
+        "steps": 1,
+        "total_return": -0.025
+      },
+      {
+        "task": "train-0001",
+        "repeat": 1,
+        "status": "completed",
+        "success": false,
+        "passed": 0,
+        "total": 121,
+        "steps": 1,
+        "total_return": -0.025
+      },
+      {
+        "task": "train-0001",
+        "repeat": 2,
+        "status": "completed",
+        "success": false,
+        "passed": 0,
+        "total": 121,
+        "steps": 1,
+        "total_return": -0.025
+      },
+      {
+        "task": "train-0001",
+        "repeat": 3,
+        "status": "completed",
+        "success": false,
+        "passed": 0,
+        "total": 121,
+        "steps": 1,
+        "total_return": -0.025
+      },
+      {
+        "task": "train-0001",
+        "repeat": 4,
+        "status": "completed",
+        "success": false,
+        "passed": 0,
+        "total": 121,
+        "steps": 1,
+        "total_return": -0.025
+      },
+      {
+        "task": "train-0001",
+        "repeat": 5,
+        "status": "completed",
+        "success": false,
+        "passed": 0,
+        "total": 121,
+        "steps": 1,
+        "total_return": -0.025
+      },
+      {
+        "task": "train-0001",
+        "repeat": 6,
+        "status": "completed",
+        "success": false,
+        "passed": 0,
+        "total": 121,
+        "steps": 1,
+        "total_return": -0.025
+      },
+      {
+        "task": "train-0001",
+        "repeat": 7,
+        "status": "completed",
+        "success": false,
+        "passed": 0,
+        "total": 121,
+        "steps": 1,
+        "total_return": -0.025
+      },
+      {
+        "task": "train-0008",
+        "repeat": 0,
+        "status": "completed",
+        "success": false,
+        "passed": 36,
+        "total": 109,
+        "steps": 1,
+        "total_return": -0.025
+      },
+      {
+        "task": "train-0008",
+        "repeat": 1,
+        "status": "completed",
+        "success": false,
+        "passed": 36,
+        "total": 109,
+        "steps": 1,
+        "total_return": -0.025
+      },
+      {
+        "task": "train-0008",
+        "repeat": 2,
+        "status": "completed",
+        "success": false,
+        "passed": 36,
+        "total": 109,
+        "steps": 1,
+        "total_return": -0.025
+      },
+      {
+        "task": "train-0008",
+        "repeat": 3,
+        "status": "completed",
+        "success": false,
+        "passed": 36,
+        "total": 109,
+        "steps": 1,
+        "total_return": -0.025
+      },
+      {
+        "task": "train-0008",
+        "repeat": 4,
+        "status": "completed",
+        "success": false,
+        "passed": 36,
+        "total": 109,
+        "steps": 1,
+        "total_return": -0.025
+      },
+      {
+        "task": "train-0008",
+        "repeat": 5,
+        "status": "completed",
+        "success": false,
+        "passed": 36,
+        "total": 109,
+        "steps": 1,
+        "total_return": -0.025
+      },
+      {
+        "task": "train-0008",
+        "repeat": 6,
+        "status": "completed",
+        "success": false,
+        "passed": 36,
+        "total": 109,
+        "steps": 1,
+        "total_return": -0.025
+      },
+      {
+        "task": "train-0008",
+        "repeat": 7,
+        "status": "completed",
+        "success": false,
+        "passed": 36,
+        "total": 109,
+        "steps": 1,
+        "total_return": -0.025
+      }
+    ],
+    "note": "Repeated worlds are clustered; mixed outcomes are a diversity proxy, not proof of learning."
+  },
+  "parallel_http": [
+    {
+      "ok": true,
+      "reward": -0.025,
+      "step": 1
+    },
+    {
+      "ok": true,
+      "reward": -0.025,
+      "step": 1
+    },
+    {
+      "ok": true,
+      "reward": -0.025,
+      "step": 1
+    },
+    {
+      "ok": true,
+      "reward": -0.025,
+      "step": 1
+    },
+    {
+      "ok": true,
+      "reward": -0.025,
+      "step": 1
+    },
+    {
+      "ok": true,
+      "reward": -0.025,
+      "step": 1
+    },
+    {
+      "ok": true,
+      "reward": -0.025,
+      "step": 1
+    },
+    {
+      "ok": true,
+      "reward": -0.025,
+      "step": 1
+    }
+  ],
+  "seconds": 13.478157333098352,
+  "health": {
+    "ok": true,
+    "version": "7.0.0",
+    "runtime_bank_seal": "7b7b54ac532b054c073d55512f7133e51721e5b9a26a586cfd4aa42447e85b71"
+  }
+}

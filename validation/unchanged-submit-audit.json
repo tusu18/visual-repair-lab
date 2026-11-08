@@ -1,0 +1,1083 @@
+{
+  "tasks": 134,
+  "positive_unchanged_rewards": 0,
+  "nonzero_terminal": 0,
+  "seconds": 55.79760449985042,
+  "rows": [
+    {
+      "task": "train-0000",
+      "initial_passed": 76,
+      "total": 129,
+      "terminal": -0.0,
+      "reward": -0.025,
+      "final_passed": 76
+    },
+    {
+      "task": "train-0001",
+      "initial_passed": 0,
+      "total": 121,
+      "terminal": -0.0,
+      "reward": -0.025,
+      "final_passed": 0
+    },
+    {
+      "task": "train-0003",
+      "initial_passed": 113,
+      "total": 129,
+      "terminal": -0.0,
+      "reward": -0.025,
+      "final_passed": 113
+    },
+    {
+      "task": "train-0004",
+      "initial_passed": 0,
+      "total": 121,
+      "terminal": -0.0,
+      "reward": -0.025,
+      "final_passed": 0
+    },
+    {
+      "task": "train-0006",
+      "initial_passed": 70,
+      "total": 129,
+      "terminal": -0.0,
+      "reward": -0.025,
+      "final_passed": 70
+    },
+    {
+      "task": "train-0007",
+      "initial_passed": 0,
+      "total": 121,
+      "terminal": -0.0,
+      "reward": -0.025,
+      "final_passed": 0
+    },
+    {
+      "task": "train-0008",
+      "initial_passed": 36,
+      "total": 109,
+      "terminal": -0.0,
+      "reward": -0.025,
+      "final_passed": 36
+    },
+    {
+      "task": "train-0011",
+      "initial_passed": 51,
+      "total": 109,
+      "terminal": -0.0,
+      "reward": -0.025,
+      "final_passed": 51
+    },
+    {
+      "task": "train-0012",
+      "initial_passed": 70,
+      "total": 129,
+      "terminal": -0.0,
+      "reward": -0.025,
+      "final_passed": 70
+    },
+    {
+      "task": "train-0013",
+      "initial_passed": 44,
+      "total": 121,
+      "terminal": -0.0,
+      "reward": -0.025,
+      "final_passed": 44
+    },
+    {
+      "task": "train-0014",
+      "initial_passed": 51,
+      "total": 109,
+      "terminal": -0.0,
+      "reward": -0.025,
+      "final_passed": 51
+    },
+    {
+      "task": "train-0016",
+      "initial_passed": 19,
+      "total": 121,
+      "terminal": -0.0,
+      "reward": -0.025,
+      "final_passed": 19
+    },
+    {
+      "task": "train-0017",
+      "initial_passed": 99,
+      "total": 109,
+      "terminal": -0.0,
+      "reward": -0.025,
+      "final_passed": 99
+    },
+    {
+      "task": "train-0018",
+      "initial_passed": 99,
+      "total": 129,
+      "terminal": -0.0,
+      "reward": -0.025,
+      "final_passed": 99
+    },
+    {
+      "task": "train-0022",
+      "initial_passed": 26,
+      "total": 121,
+      "terminal": -0.0,
+      "reward": -0.025,
+      "final_passed": 26
+    },
+    {
+      "task": "train-0023",
+      "initial_passed": 102,
+      "total": 109,
+      "terminal": -0.0,
+      "reward": -0.025,
+      "final_passed": 102
+    },
+    {
+      "task": "train-0025",
+      "initial_passed": 0,
+      "total": 121,
+      "terminal": -0.0,
+      "reward": -0.025,
+      "final_passed": 0
+    },
+    {
+      "task": "train-0026",
+      "initial_passed": 45,
+      "total": 109,
+      "terminal": -0.0,
+      "reward": -0.025,
+      "final_passed": 45
+    },
+    {
+      "task": "train-0027",
+      "initial_passed": 42,
+      "total": 129,
+      "terminal": -0.0,
+      "reward": -0.025,
+      "final_passed": 42
+    },
+    {
+      "task": "train-0028",
+      "initial_passed": 3,
+      "total": 121,
+      "terminal": -0.0,
+      "reward": -0.025,
+      "final_passed": 3
+    },
+    {
+      "task": "train-0029",
+      "initial_passed": 91,
+      "total": 109,
+      "terminal": -0.0,
+      "reward": -0.025,
+      "final_passed": 91
+    },
+    {
+      "task": "train-0031",
+      "initial_passed": 38,
+      "total": 121,
+      "terminal": -0.0,
+      "reward": -0.025,
+      "final_passed": 38
+    },
+    {
+      "task": "train-0032",
+      "initial_passed": 27,
+      "total": 109,
+      "terminal": -0.0,
+      "reward": -0.025,
+      "final_passed": 27
+    },
+    {
+      "task": "train-0034",
+      "initial_passed": 0,
+      "total": 121,
+      "terminal": -0.0,
+      "reward": -0.025,
+      "final_passed": 0
+    },
+    {
+      "task": "train-0036",
+      "initial_passed": 98,
+      "total": 129,
+      "terminal": -0.0,
+      "reward": -0.025,
+      "final_passed": 98
+    },
+    {
+      "task": "train-0037",
+      "initial_passed": 37,
+      "total": 121,
+      "terminal": -0.0,
+      "reward": -0.025,
+      "final_passed": 37
+    },
+    {
+      "task": "train-0040",
+      "initial_passed": 0,
+      "total": 121,
+      "terminal": -0.0,
+      "reward": -0.025,
+      "final_passed": 0
+    },
+    {
+      "task": "train-0041",
+      "initial_passed": 40,
+      "total": 109,
+      "terminal": -0.0,
+      "reward": -0.025,
+      "final_passed": 40
+    },
+    {
+      "task": "train-0043",
+      "initial_passed": 77,
+      "total": 121,
+      "terminal": -0.0,
+      "reward": -0.025,
+      "final_passed": 77
+    },
+    {
+      "task": "train-0045",
+      "initial_passed": 82,
+      "total": 129,
+      "terminal": -0.0,
+      "reward": -0.025,
+      "final_passed": 82
+    },
+    {
+      "task": "train-0046",
+      "initial_passed": 0,
+      "total": 121,
+      "terminal": -0.0,
+      "reward": -0.025,
+      "final_passed": 0
+    },
+    {
+      "task": "train-0047",
+      "initial_passed": 87,
+      "total": 109,
+      "terminal": -0.0,
+      "reward": -0.025,
+      "final_passed": 87
+    },
+    {
+      "task": "train-0049",
+      "initial_passed": 92,
+      "total": 121,
+      "terminal": -0.0,
+      "reward": -0.025,
+      "final_passed": 92
+    },
+    {
+      "task": "train-0052",
+      "initial_passed": 83,
+      "total": 121,
+      "terminal": -0.0,
+      "reward": -0.025,
+      "final_passed": 83
+    },
+    {
+      "task": "train-0053",
+      "initial_passed": 30,
+      "total": 109,
+      "terminal": -0.0,
+      "reward": -0.025,
+      "final_passed": 30
+    },
+    {
+      "task": "train-0055",
+      "initial_passed": 0,
+      "total": 121,
+      "terminal": -0.0,
+      "reward": -0.025,
+      "final_passed": 0
+    },
+    {
+      "task": "train-0056",
+      "initial_passed": 35,
+      "total": 109,
+      "terminal": -0.0,
+      "reward": -0.025,
+      "final_passed": 35
+    },
+    {
+      "task": "train-0057",
+      "initial_passed": 48,
+      "total": 129,
+      "terminal": -0.0,
+      "reward": -0.025,
+      "final_passed": 48
+    },
+    {
+      "task": "train-0058",
+      "initial_passed": 0,
+      "total": 121,
+      "terminal": -0.0,
+      "reward": -0.025,
+      "final_passed": 0
+    },
+    {
+      "task": "train-0059",
+      "initial_passed": 36,
+      "total": 109,
+      "terminal": -0.0,
+      "reward": -0.025,
+      "final_passed": 36
+    },
+    {
+      "task": "train-0061",
+      "initial_passed": 80,
+      "total": 121,
+      "terminal": -0.0,
+      "reward": -0.025,
+      "final_passed": 80
+    },
+    {
+      "task": "train-0064",
+      "initial_passed": 0,
+      "total": 121,
+      "terminal": -0.0,
+      "reward": -0.025,
+      "final_passed": 0
+    },
+    {
+      "task": "train-0065",
+      "initial_passed": 64,
+      "total": 109,
+      "terminal": -0.0,
+      "reward": -0.025,
+      "final_passed": 64
+    },
+    {
+      "task": "train-0066",
+      "initial_passed": 81,
+      "total": 129,
+      "terminal": -0.0,
+      "reward": -0.025,
+      "final_passed": 81
+    },
+    {
+      "task": "train-0067",
+      "initial_passed": 0,
+      "total": 121,
+      "terminal": -0.0,
+      "reward": -0.025,
+      "final_passed": 0
+    },
+    {
+      "task": "train-0069",
+      "initial_passed": 92,
+      "total": 129,
+      "terminal": -0.0,
+      "reward": -0.025,
+      "final_passed": 92
+    },
+    {
+      "task": "train-0070",
+      "initial_passed": 0,
+      "total": 121,
+      "terminal": -0.0,
+      "reward": -0.025,
+      "final_passed": 0
+    },
+    {
+      "task": "train-0071",
+      "initial_passed": 48,
+      "total": 109,
+      "terminal": -0.0,
+      "reward": -0.025,
+      "final_passed": 48
+    },
+    {
+      "task": "train-0073",
+      "initial_passed": 0,
+      "total": 121,
+      "terminal": -0.0,
+      "reward": -0.025,
+      "final_passed": 0
+    },
+    {
+      "task": "train-0074",
+      "initial_passed": 100,
+      "total": 109,
+      "terminal": -0.0,
+      "reward": -0.025,
+      "final_passed": 100
+    },
+    {
+      "task": "train-0076",
+      "initial_passed": 95,
+      "total": 121,
+      "terminal": -0.0,
+      "reward": -0.025,
+      "final_passed": 95
+    },
+    {
+      "task": "train-0077",
+      "initial_passed": 71,
+      "total": 109,
+      "terminal": -0.0,
+      "reward": -0.025,
+      "final_passed": 71
+    },
+    {
+      "task": "train-0078",
+      "initial_passed": 61,
+      "total": 129,
+      "terminal": -0.0,
+      "reward": -0.025,
+      "final_passed": 61
+    },
+    {
+      "task": "train-0079",
+      "initial_passed": 0,
+      "total": 121,
+      "terminal": -0.0,
+      "reward": -0.025,
+      "final_passed": 0
+    },
+    {
+      "task": "train-0080",
+      "initial_passed": 49,
+      "total": 109,
+      "terminal": -0.0,
+      "reward": -0.025,
+      "final_passed": 49
+    },
+    {
+      "task": "train-0082",
+      "initial_passed": 0,
+      "total": 121,
+      "terminal": -0.0,
+      "reward": -0.025,
+      "final_passed": 0
+    },
+    {
+      "task": "train-0083",
+      "initial_passed": 79,
+      "total": 109,
+      "terminal": -0.0,
+      "reward": -0.025,
+      "final_passed": 79
+    },
+    {
+      "task": "train-0085",
+      "initial_passed": 85,
+      "total": 121,
+      "terminal": -0.0,
+      "reward": -0.025,
+      "final_passed": 85
+    },
+    {
+      "task": "train-0086",
+      "initial_passed": 40,
+      "total": 109,
+      "terminal": -0.0,
+      "reward": -0.025,
+      "final_passed": 40
+    },
+    {
+      "task": "train-0087",
+      "initial_passed": 70,
+      "total": 129,
+      "terminal": -0.0,
+      "reward": -0.025,
+      "final_passed": 70
+    },
+    {
+      "task": "train-0089",
+      "initial_passed": 59,
+      "total": 109,
+      "terminal": -0.0,
+      "reward": -0.025,
+      "final_passed": 59
+    },
+    {
+      "task": "train-0090",
+      "initial_passed": 40,
+      "total": 129,
+      "terminal": -0.0,
+      "reward": -0.025,
+      "final_passed": 40
+    },
+    {
+      "task": "train-0091",
+      "initial_passed": 0,
+      "total": 121,
+      "terminal": -0.0,
+      "reward": -0.025,
+      "final_passed": 0
+    },
+    {
+      "task": "train-0093",
+      "initial_passed": 80,
+      "total": 129,
+      "terminal": -0.0,
+      "reward": -0.025,
+      "final_passed": 80
+    },
+    {
+      "task": "train-0094",
+      "initial_passed": 0,
+      "total": 121,
+      "terminal": -0.0,
+      "reward": -0.025,
+      "final_passed": 0
+    },
+    {
+      "task": "train-0096",
+      "initial_passed": 105,
+      "total": 129,
+      "terminal": -0.0,
+      "reward": -0.025,
+      "final_passed": 105
+    },
+    {
+      "task": "train-0097",
+      "initial_passed": 0,
+      "total": 121,
+      "terminal": -0.0,
+      "reward": -0.025,
+      "final_passed": 0
+    },
+    {
+      "task": "train-0099",
+      "initial_passed": 75,
+      "total": 129,
+      "terminal": -0.0,
+      "reward": -0.025,
+      "final_passed": 75
+    },
+    {
+      "task": "train-0100",
+      "initial_passed": 0,
+      "total": 121,
+      "terminal": -0.0,
+      "reward": -0.025,
+      "final_passed": 0
+    },
+    {
+      "task": "train-0103",
+      "initial_passed": 35,
+      "total": 121,
+      "terminal": -0.0,
+      "reward": -0.025,
+      "final_passed": 35
+    },
+    {
+      "task": "train-0105",
+      "initial_passed": 108,
+      "total": 129,
+      "terminal": -0.0,
+      "reward": -0.025,
+      "final_passed": 108
+    },
+    {
+      "task": "train-0106",
+      "initial_passed": 0,
+      "total": 121,
+      "terminal": -0.0,
+      "reward": -0.025,
+      "final_passed": 0
+    },
+    {
+      "task": "train-0107",
+      "initial_passed": 99,
+      "total": 109,
+      "terminal": -0.0,
+      "reward": -0.025,
+      "final_passed": 99
+    },
+    {
+      "task": "train-0108",
+      "initial_passed": 55,
+      "total": 129,
+      "terminal": -0.0,
+      "reward": -0.025,
+      "final_passed": 55
+    },
+    {
+      "task": "train-0109",
+      "initial_passed": 19,
+      "total": 121,
+      "terminal": -0.0,
+      "reward": -0.025,
+      "final_passed": 19
+    },
+    {
+      "task": "train-0110",
+      "initial_passed": 33,
+      "total": 109,
+      "terminal": -0.0,
+      "reward": -0.025,
+      "final_passed": 33
+    },
+    {
+      "task": "train-0111",
+      "initial_passed": 68,
+      "total": 129,
+      "terminal": -0.0,
+      "reward": -0.025,
+      "final_passed": 68
+    },
+    {
+      "task": "train-0112",
+      "initial_passed": 0,
+      "total": 121,
+      "terminal": -0.0,
+      "reward": -0.025,
+      "final_passed": 0
+    },
+    {
+      "task": "train-0113",
+      "initial_passed": 54,
+      "total": 109,
+      "terminal": -0.0,
+      "reward": -0.025,
+      "final_passed": 54
+    },
+    {
+      "task": "train-0115",
+      "initial_passed": 16,
+      "total": 121,
+      "terminal": -0.0,
+      "reward": -0.025,
+      "final_passed": 16
+    },
+    {
+      "task": "train-0116",
+      "initial_passed": 103,
+      "total": 109,
+      "terminal": -0.0,
+      "reward": -0.025,
+      "final_passed": 103
+    },
+    {
+      "task": "train-0118",
+      "initial_passed": 0,
+      "total": 121,
+      "terminal": -0.0,
+      "reward": -0.025,
+      "final_passed": 0
+    },
+    {
+      "task": "train-0119",
+      "initial_passed": 75,
+      "total": 109,
+      "terminal": -0.0,
+      "reward": -0.025,
+      "final_passed": 75
+    },
+    {
+      "task": "train-0121",
+      "initial_passed": 27,
+      "total": 121,
+      "terminal": -0.0,
+      "reward": -0.025,
+      "final_passed": 27
+    },
+    {
+      "task": "train-0122",
+      "initial_passed": 83,
+      "total": 109,
+      "terminal": -0.0,
+      "reward": -0.025,
+      "final_passed": 83
+    },
+    {
+      "task": "train-0123",
+      "initial_passed": 70,
+      "total": 129,
+      "terminal": -0.0,
+      "reward": -0.025,
+      "final_passed": 70
+    },
+    {
+      "task": "train-0124",
+      "initial_passed": 0,
+      "total": 121,
+      "terminal": -0.0,
+      "reward": -0.025,
+      "final_passed": 0
+    },
+    {
+      "task": "train-0125",
+      "initial_passed": 94,
+      "total": 109,
+      "terminal": -0.0,
+      "reward": -0.025,
+      "final_passed": 94
+    },
+    {
+      "task": "train-0127",
+      "initial_passed": 50,
+      "total": 121,
+      "terminal": -0.0,
+      "reward": -0.025,
+      "final_passed": 50
+    },
+    {
+      "task": "train-0128",
+      "initial_passed": 81,
+      "total": 109,
+      "terminal": -0.0,
+      "reward": -0.025,
+      "final_passed": 81
+    },
+    {
+      "task": "train-0130",
+      "initial_passed": 0,
+      "total": 121,
+      "terminal": -0.0,
+      "reward": -0.025,
+      "final_passed": 0
+    },
+    {
+      "task": "train-0133",
+      "initial_passed": 82,
+      "total": 121,
+      "terminal": -0.0,
+      "reward": -0.025,
+      "final_passed": 82
+    },
+    {
+      "task": "train-0136",
+      "initial_passed": 81,
+      "total": 121,
+      "terminal": -0.0,
+      "reward": -0.025,
+      "final_passed": 81
+    },
+    {
+      "task": "train-0139",
+      "initial_passed": 0,
+      "total": 121,
+      "terminal": -0.0,
+      "reward": -0.025,
+      "final_passed": 0
+    },
+    {
+      "task": "train-0140",
+      "initial_passed": 69,
+      "total": 109,
+      "terminal": -0.0,
+      "reward": -0.025,
+      "final_passed": 69
+    },
+    {
+      "task": "train-0141",
+      "initial_passed": 55,
+      "total": 129,
+      "terminal": -0.0,
+      "reward": -0.025,
+      "final_passed": 55
+    },
+    {
+      "task": "train-0142",
+      "initial_passed": 0,
+      "total": 121,
+      "terminal": -0.0,
+      "reward": -0.025,
+      "final_passed": 0
+    },
+    {
+      "task": "train-0143",
+      "initial_passed": 44,
+      "total": 109,
+      "terminal": -0.0,
+      "reward": -0.025,
+      "final_passed": 44
+    },
+    {
+      "task": "train-0145",
+      "initial_passed": 0,
+      "total": 121,
+      "terminal": -0.0,
+      "reward": -0.025,
+      "final_passed": 0
+    },
+    {
+      "task": "train-0146",
+      "initial_passed": 21,
+      "total": 109,
+      "terminal": -0.0,
+      "reward": -0.025,
+      "final_passed": 21
+    },
+    {
+      "task": "train-0147",
+      "initial_passed": 100,
+      "total": 129,
+      "terminal": -0.0,
+      "reward": -0.025,
+      "final_passed": 100
+    },
+    {
+      "task": "train-0148",
+      "initial_passed": 0,
+      "total": 121,
+      "terminal": -0.0,
+      "reward": -0.025,
+      "final_passed": 0
+    },
+    {
+      "task": "train-0151",
+      "initial_passed": 0,
+      "total": 121,
+      "terminal": -0.0,
+      "reward": -0.025,
+      "final_passed": 0
+    },
+    {
+      "task": "train-0152",
+      "initial_passed": 40,
+      "total": 109,
+      "terminal": -0.0,
+      "reward": -0.025,
+      "final_passed": 40
+    },
+    {
+      "task": "train-0153",
+      "initial_passed": 76,
+      "total": 129,
+      "terminal": -0.0,
+      "reward": -0.025,
+      "final_passed": 76
+    },
+    {
+      "task": "train-0154",
+      "initial_passed": 39,
+      "total": 121,
+      "terminal": -0.0,
+      "reward": -0.025,
+      "final_passed": 39
+    },
+    {
+      "task": "train-0155",
+      "initial_passed": 69,
+      "total": 109,
+      "terminal": -0.0,
+      "reward": -0.025,
+      "final_passed": 69
+    },
+    {
+      "task": "train-0160",
+      "initial_passed": 33,
+      "total": 121,
+      "terminal": -0.0,
+      "reward": -0.025,
+      "final_passed": 33
+    },
+    {
+      "task": "train-0162",
+      "initial_passed": 109,
+      "total": 129,
+      "terminal": -0.0,
+      "reward": -0.025,
+      "final_passed": 109
+    },
+    {
+      "task": "train-0163",
+      "initial_passed": 38,
+      "total": 121,
+      "terminal": -0.0,
+      "reward": -0.025,
+      "final_passed": 38
+    },
+    {
+      "task": "train-0164",
+      "initial_passed": 84,
+      "total": 109,
+      "terminal": -0.0,
+      "reward": -0.025,
+      "final_passed": 84
+    },
+    {
+      "task": "train-0165",
+      "initial_passed": 87,
+      "total": 129,
+      "terminal": -0.0,
+      "reward": -0.025,
+      "final_passed": 87
+    },
+    {
+      "task": "train-0166",
+      "initial_passed": 56,
+      "total": 121,
+      "terminal": -0.0,
+      "reward": -0.025,
+      "final_passed": 56
+    },
+    {
+      "task": "train-0168",
+      "initial_passed": 81,
+      "total": 129,
+      "terminal": -0.0,
+      "reward": -0.025,
+      "final_passed": 81
+    },
+    {
+      "task": "train-0169",
+      "initial_passed": 16,
+      "total": 121,
+      "terminal": -0.0,
+      "reward": -0.025,
+      "final_passed": 16
+    },
+    {
+      "task": "train-0172",
+      "initial_passed": 3,
+      "total": 121,
+      "terminal": -0.0,
+      "reward": -0.025,
+      "final_passed": 3
+    },
+    {
+      "task": "train-0174",
+      "initial_passed": 65,
+      "total": 129,
+      "terminal": -0.0,
+      "reward": -0.025,
+      "final_passed": 65
+    },
+    {
+      "task": "train-0175",
+      "initial_passed": 82,
+      "total": 121,
+      "terminal": -0.0,
+      "reward": -0.025,
+      "final_passed": 82
+    },
+    {
+      "task": "train-0177",
+      "initial_passed": 69,
+      "total": 129,
+      "terminal": -0.0,
+      "reward": -0.025,
+      "final_passed": 69
+    },
+    {
+      "task": "train-0178",
+      "initial_passed": 36,
+      "total": 121,
+      "terminal": -0.0,
+      "reward": -0.025,
+      "final_passed": 36
+    },
+    {
+      "task": "train-0179",
+      "initial_passed": 99,
+      "total": 109,
+      "terminal": -0.0,
+      "reward": -0.025,
+      "final_passed": 99
+    },
+    {
+      "task": "train-0180",
+      "initial_passed": 32,
+      "total": 129,
+      "terminal": -0.0,
+      "reward": -0.025,
+      "final_passed": 32
+    },
+    {
+      "task": "train-0181",
+      "initial_passed": 0,
+      "total": 121,
+      "terminal": -0.0,
+      "reward": -0.025,
+      "final_passed": 0
+    },
+    {
+      "task": "train-0182",
+      "initial_passed": 20,
+      "total": 109,
+      "terminal": -0.0,
+      "reward": -0.025,
+      "final_passed": 20
+    },
+    {
+      "task": "train-0183",
+      "initial_passed": 105,
+      "total": 129,
+      "terminal": -0.0,
+      "reward": -0.025,
+      "final_passed": 105
+    },
+    {
+      "task": "train-0184",
+      "initial_passed": 16,
+      "total": 121,
+      "terminal": -0.0,
+      "reward": -0.025,
+      "final_passed": 16
+    },
+    {
+      "task": "train-0187",
+      "initial_passed": 81,
+      "total": 121,
+      "terminal": -0.0,
+      "reward": -0.025,
+      "final_passed": 81
+    },
+    {
+      "task": "train-0189",
+      "initial_passed": 104,
+      "total": 129,
+      "terminal": -0.0,
+      "reward": -0.025,
+      "final_passed": 104
+    },
+    {
+      "task": "train-0190",
+      "initial_passed": 16,
+      "total": 121,
+      "terminal": -0.0,
+      "reward": -0.025,
+      "final_passed": 16
+    },
+    {
+      "task": "train-0191",
+      "initial_passed": 32,
+      "total": 109,
+      "terminal": -0.0,
+      "reward": -0.025,
+      "final_passed": 32
+    },
+    {
+      "task": "train-0192",
+      "initial_passed": 70,
+      "total": 129,
+      "terminal": -0.0,
+      "reward": -0.025,
+      "final_passed": 70
+    },
+    {
+      "task": "train-0193",
+      "initial_passed": 88,
+      "total": 121,
+      "terminal": -0.0,
+      "reward": -0.025,
+      "final_passed": 88
+    },
+    {
+      "task": "train-0196",
+      "initial_passed": 37,
+      "total": 121,
+      "terminal": -0.0,
+      "reward": -0.025,
+      "final_passed": 37
+    },
+    {
+      "task": "train-0199",
+      "initial_passed": 0,
+      "total": 121,
+      "terminal": -0.0,
+      "reward": -0.025,
+      "final_passed": 0
+    }
+  ],
+  "old_formula_positive_unchanged": 89,
+  "old_formula_median_return": 1.24105504587156,
+  "new_median_return": -0.025
+}

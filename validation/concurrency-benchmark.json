@@ -1,0 +1,133 @@
+{
+  "runs": [
+    {
+      "implementation": "visual_repair_lab.adaptive.server",
+      "episodes": 1,
+      "steps_per_episode": 8,
+      "seconds": 9.039539708988741,
+      "accepted_steps": 8,
+      "errors": 0,
+      "step_median_seconds": 1.0287113959202543,
+      "step_p95_seconds": 1.2585084168240428,
+      "step_max_seconds": 1.2585084168240428,
+      "steps_per_second": 0.8850008139291602,
+      "outcomes": [
+        {
+          "ok": true,
+          "steps": 8
+        }
+      ]
+    },
+    {
+      "implementation": "visual_repair_lab.adaptive.server",
+      "episodes": 8,
+      "steps_per_episode": 8,
+      "seconds": 72.23765475000255,
+      "accepted_steps": 64,
+      "errors": 0,
+      "step_median_seconds": 1.0811825835844502,
+      "step_p95_seconds": 1.282211875077337,
+      "step_max_seconds": 18.75993970921263,
+      "steps_per_second": 0.8859645322303011,
+      "outcomes": [
+        {
+          "ok": true,
+          "steps": 8
+        },
+        {
+          "ok": true,
+          "steps": 8
+        },
+        {
+          "ok": true,
+          "steps": 8
+        },
+        {
+          "ok": true,
+          "steps": 8
+        },
+        {
+          "ok": true,
+          "steps": 8
+        },
+        {
+          "ok": true,
+          "steps": 8
+        },
+        {
+          "ok": true,
+          "steps": 8
+        },
+        {
+          "ok": true,
+          "steps": 8
+        }
+      ]
+    },
+    {
+      "implementation": "visual_repair_lab.v7.server",
+      "episodes": 1,
+      "steps_per_episode": 8,
+      "seconds": 3.2635999580379575,
+      "accepted_steps": 8,
+      "errors": 0,
+      "step_median_seconds": 0.23562395840417594,
+      "step_p95_seconds": 0.26118233310990036,
+      "step_max_seconds": 0.26118233310990036,
+      "steps_per_second": 2.45128082573255,
+      "outcomes": [
+        {
+          "ok": true,
+          "steps": 8
+        }
+      ]
+    },
+    {
+      "implementation": "visual_repair_lab.v7.server",
+      "episodes": 8,
+      "steps_per_episode": 8,
+      "seconds": 5.843132375041023,
+      "accepted_steps": 64,
+      "errors": 0,
+      "step_median_seconds": 0.42788360454142094,
+      "step_p95_seconds": 0.4761735408101231,
+      "step_max_seconds": 0.49193191598169506,
+      "steps_per_second": 10.95302928158472,
+      "outcomes": [
+        {
+          "ok": true,
+          "steps": 8
+        },
+        {
+          "ok": true,
+          "steps": 8
+        },
+        {
+          "ok": true,
+          "steps": 8
+        },
+        {
+          "ok": true,
+          "steps": 8
+        },
+        {
+          "ok": true,
+          "steps": 8
+        },
+        {
+          "ok": true,
+          "steps": 8
+        },
+        {
+          "ok": true,
+          "steps": 8
+        },
+        {
+          "ok": true,
+          "steps": 8
+        }
+      ]
+    }
+  ],
+  "note": "Local CPU worker timings, includes process start and rendering; no model latency."
+}

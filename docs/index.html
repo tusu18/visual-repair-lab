@@ -1,0 +1,754 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Visual Repair Lab</title>
+<meta name="description" content="An RL environment and benchmark for AI agents that debug interactive visual software: choose experiments, repair code, verify the fix, and submit to a protected grader.">
+<meta property="og:title" content="Visual Repair Lab">
+<meta property="og:description" content="An RL environment and benchmark for agents that debug visual software. 134 certified tasks, relative-improvement rewards, exact trajectory replay, 307 passing tests.">
+<meta property="og:image" content="https://tusu18.github.io/visual-repair-lab/assets/og.png">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230f2536'/%3E%3Crect x='6' y='9' width='8' height='14' rx='2' fill='%2314b8a6'/%3E%3Crect x='18' y='9' width='8' height='14' rx='2' fill='none' stroke='%2314b8a6' stroke-width='2'/%3E%3C/svg%3E">
+<style>
+:root{
+  color-scheme: light;
+  --bg:#f5f7fa; --surface:#ffffff; --surface-2:#eef2f6; --ink:#0d1b2a; --ink-2:#3f4f63; --muted:#6a7889;
+  --line:#dfe5ec; --line-2:#c9d2dc; --accent:#0f766e; --accent-ink:#ffffff; --accent-soft:#e3f4f1;
+  --hero:#0f2536; --hero-ink:#f2f7fb; --hero-ink-2:#b9c8d6; --hero-line:#23415a;
+  --pos:#2a78d6; --neg:#e34948; --dot:#2a78d6; --grid:#e6eaf0; --axis:#c3cbd5;
+  --code-bg:#0f2536; --code-ink:#e6eef5;
+  --shadow:0 1px 2px rgba(13,27,42,.06),0 4px 16px rgba(13,27,42,.05);
+  --radius:14px;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    color-scheme: dark;
+    --bg:#0a131d; --surface:#111d2a; --surface-2:#172636; --ink:#e8eef4; --ink-2:#b6c2ce; --muted:#8a99a9;
+    --line:#22344a; --line-2:#2d4460; --accent:#2dd4bf; --accent-ink:#052a26; --accent-soft:#0f2e33;
+    --hero:#07111b; --hero-ink:#eef4f9; --hero-ink-2:#a9b9c8; --hero-line:#1c3349;
+    --pos:#3987e5; --neg:#e66767; --dot:#3987e5; --grid:#1d2d3f; --axis:#2c4058;
+    --code-bg:#07111b; --code-ink:#dfe8f0;
+    --shadow:0 1px 2px rgba(0,0,0,.3),0 6px 20px rgba(0,0,0,.25);
+  }
+}
+:root[data-theme="dark"]{
+  color-scheme: dark;
+  --bg:#0a131d; --surface:#111d2a; --surface-2:#172636; --ink:#e8eef4; --ink-2:#b6c2ce; --muted:#8a99a9;
+  --line:#22344a; --line-2:#2d4460; --accent:#2dd4bf; --accent-ink:#052a26; --accent-soft:#0f2e33;
+  --hero:#07111b; --hero-ink:#eef4f9; --hero-ink-2:#a9b9c8; --hero-line:#1c3349;
+  --pos:#3987e5; --neg:#e66767; --dot:#3987e5; --grid:#1d2d3f; --axis:#2c4058;
+  --code-bg:#07111b; --code-ink:#dfe8f0;
+  --shadow:0 1px 2px rgba(0,0,0,.3),0 6px 20px rgba(0,0,0,.25);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:72px}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;-webkit-font-smoothing:antialiased}
+img{max-width:100%;height:auto;display:block}
+a{color:var(--accent);text-underline-offset:3px}
+code,pre,kbd{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px;border-radius:4px}
+.wrap{max-width:1120px;margin:0 auto;padding:0 24px}
+@media (max-width:640px){.wrap{padding:0 16px}}
+
+/* nav */
+.nav{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--hero) 94%,transparent);backdrop-filter:saturate(1.4) blur(8px);border-bottom:1px solid var(--hero-line)}
+.nav .wrap{display:flex;align-items:center;gap:20px;height:56px}
+.brand{display:flex;align-items:center;gap:10px;color:var(--hero-ink);text-decoration:none;font-weight:650;letter-spacing:-.01em;white-space:nowrap}
+.brand svg{flex:none}
+.nav ul{display:flex;gap:4px;list-style:none;margin:0 0 0 auto;padding:0;overflow-x:auto;scrollbar-width:none;min-width:0}
+.nav ul::-webkit-scrollbar{display:none}
+.nav li a{display:block;padding:6px 10px;border-radius:8px;color:var(--hero-ink-2);text-decoration:none;font-size:14px;white-space:nowrap}
+.nav li a:hover{color:var(--hero-ink);background:var(--hero-line)}
+.nav li a.gh{color:var(--hero-ink);border:1px solid var(--hero-line)}
+@media (max-width:860px){.nav li.opt{display:none}}
+@media (max-width:480px){.nav li.opt2{display:none}.brand .bt{display:none}}
+
+/* hero */
+.hero{background:var(--hero);color:var(--hero-ink);padding:56px 0 64px;border-bottom:3px solid #14b8a6}
+.hero-grid{display:grid;grid-template-columns:1.05fr 1fr;gap:48px;align-items:center}
+@media (max-width:920px){.hero-grid{grid-template-columns:1fr;gap:32px}}
+.eyebrow{font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:#5eead4;font-weight:600;margin:0 0 14px}
+.hero h1{font-size:clamp(38px,6vw,60px);line-height:1.04;letter-spacing:-.03em;margin:0 0 18px;font-weight:720}
+.lede{font-size:clamp(17px,2vw,19px);color:var(--hero-ink-2);margin:0 0 28px;max-width:34em}
+.lede strong{color:var(--hero-ink);font-weight:600}
+.btns{display:flex;flex-wrap:wrap;gap:12px;margin-bottom:34px}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:11px 18px;border-radius:10px;font-weight:600;font-size:15px;text-decoration:none;border:1px solid transparent}
+.btn.primary{background:#14b8a6;color:#052a26}
+.btn.primary:hover{background:#2dd4bf}
+.btn.ghost{color:var(--hero-ink);border-color:var(--hero-line)}
+.btn.ghost:hover{background:var(--hero-line)}
+.stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin:0;padding:0;list-style:none}
+@media (max-width:640px){.stats{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.stats li{border:1px solid var(--hero-line);border-radius:12px;padding:12px 14px}
+.stats b{display:block;font-size:24px;font-weight:700;letter-spacing:-.02em;color:var(--hero-ink)}
+.stats span{display:block;font-size:13px;color:var(--hero-ink-2);line-height:1.35}
+.hero-fig{margin:0;background:#f3f6fb;border-radius:var(--radius);padding:10px;box-shadow:0 20px 60px rgba(0,0,0,.35)}
+.hero-fig img{border-radius:8px}
+.hero-fig figcaption{color:#3f4f63;font-size:13px;padding:10px 6px 2px;line-height:1.45}
+
+/* sections */
+section{padding:72px 0;border-bottom:1px solid var(--line)}
+section:last-of-type{border-bottom:0}
+.kicker{font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);font-weight:650;margin:0 0 10px}
+h2{font-size:clamp(28px,4vw,38px);line-height:1.12;letter-spacing:-.025em;margin:0 0 14px;font-weight:700}
+h3{font-size:19px;line-height:1.3;margin:0 0 8px;letter-spacing:-.01em}
+.sub{color:var(--ink-2);font-size:18px;max-width:46em;margin:0 0 36px}
+p{margin:0 0 14px}
+.muted{color:var(--muted)}
+.small{font-size:14px}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+.grid2>*,.grid3>*,.grid4>*,.hero-grid>*,.viewer>*{min-width:0}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+@media (max-width:920px){.grid3,.grid4{grid-template-columns:1fr 1fr}}
+@media (max-width:640px){.grid2,.grid3,.grid4{grid-template-columns:1fr}}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:22px;box-shadow:var(--shadow)}
+.card p:last-child{margin-bottom:0}
+.tag{display:inline-block;font-size:12px;font-weight:600;padding:2px 8px;border-radius:999px;background:var(--surface-2);color:var(--ink-2);margin-bottom:10px}
+.tag.hold{background:var(--accent-soft);color:var(--accent)}
+
+/* story steps */
+.story{counter-reset:s;display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin:0;padding:0;list-style:none}
+@media (max-width:920px){.story{grid-template-columns:1fr 1fr}}
+@media (max-width:560px){.story{grid-template-columns:1fr}}
+.story li{counter-increment:s;background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:18px 18px 16px;position:relative}
+.story li::before{content:counter(s);display:inline-grid;place-items:center;width:26px;height:26px;border-radius:50%;background:var(--accent-soft);color:var(--accent);font-weight:700;font-size:14px;margin-bottom:10px}
+.story li b{display:block;margin-bottom:4px}
+.story li span{color:var(--ink-2);font-size:15px}
+
+/* loop */
+.loop{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin:8px 0 34px;padding:0;list-style:none}
+.loop li{display:flex;align-items:center;gap:8px}
+.loop .node{background:var(--surface);border:1px solid var(--line-2);border-radius:10px;padding:8px 14px;font-weight:600;font-size:15px}
+.loop .node small{display:block;font-weight:400;color:var(--muted);font-size:12px;line-height:1.2}
+.loop .node.grader{background:var(--hero);color:var(--hero-ink);border-color:var(--hero)}
+.loop .node.grader small{color:var(--hero-ink-2)}
+.loop .arrow{color:var(--muted);font-size:18px}
+
+/* episode viewer */
+.viewer{display:grid;grid-template-columns:1.55fr 1fr;gap:0;background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow)}
+@media (max-width:920px){.viewer{grid-template-columns:1fr}}
+.viewer .stage{background:#f3f6fb;padding:14px;border-right:1px solid var(--line)}
+@media (max-width:920px){.viewer .stage{border-right:0;border-bottom:1px solid var(--line)}}
+.viewer .stage img{border-radius:8px;width:100%;height:auto;aspect-ratio:1200/700}
+.viewer .panel{padding:20px;display:flex;flex-direction:column;gap:14px;min-width:0}
+.steps{display:flex;gap:6px;flex-wrap:wrap}
+.steps button{font:inherit;font-size:14px;padding:6px 11px;border-radius:8px;border:1px solid var(--line-2);background:var(--surface);color:var(--ink-2);cursor:pointer}
+.steps button[aria-pressed="true"]{background:var(--accent);border-color:var(--accent);color:var(--accent-ink);font-weight:600}
+.panel h3{margin:0}
+.panel pre{margin:0;background:var(--code-bg);color:var(--code-ink);border-radius:10px;padding:12px 14px;font-size:13px;line-height:1.5;overflow-x:auto;white-space:pre}
+.ledger{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.ledger div{background:var(--surface-2);border-radius:10px;padding:8px 10px}
+.ledger b{display:block;font-size:18px;font-variant-numeric:tabular-nums}
+.ledger span{font-size:12px;color:var(--muted)}
+.nav-btns{display:flex;gap:8px;margin-top:auto}
+.nav-btns button{font:inherit;font-size:14px;font-weight:600;padding:8px 14px;border-radius:9px;border:1px solid var(--line-2);background:var(--surface);color:var(--ink);cursor:pointer}
+.nav-btns button:disabled{opacity:.45;cursor:default}
+
+/* families */
+.fam img{border-radius:8px;border:1px solid var(--line);margin-bottom:14px;background:#f3f6fb}
+.fam .ph{aspect-ratio:1200/700;border-radius:8px;border:1px dashed var(--line-2);margin-bottom:14px;display:grid;place-items:center;color:var(--muted);font-size:14px;text-align:center;padding:12px;background:var(--surface-2)}
+.fam dl{margin:0;font-size:15px}
+.fam dt{font-weight:600;color:var(--ink);margin-top:8px}
+.fam dd{margin:2px 0 0;color:var(--ink-2)}
+
+/* pipeline */
+.pipe{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;margin:0 0 28px;padding:0;list-style:none}
+@media (max-width:920px){.pipe{grid-template-columns:1fr 1fr}}
+@media (max-width:560px){.pipe{grid-template-columns:1fr}}
+.pipe li{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:14px 16px}
+.pipe li b{display:block;font-size:15px;margin-bottom:4px}
+.pipe li span{font-size:14px;color:var(--ink-2);line-height:1.45;display:block}
+.funnel{display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin:6px 0 0}
+.funnel .n{font-size:40px;font-weight:700;letter-spacing:-.03em;line-height:1}
+.funnel .l{font-size:14px;color:var(--ink-2);max-width:12em;line-height:1.35}
+.funnel .ar{color:var(--muted);font-size:22px}
+
+/* formula + calculator */
+.formula{background:var(--hero);color:var(--hero-ink);border-radius:var(--radius);padding:24px 26px}
+.formula h3{color:var(--hero-ink)}
+.formula table{width:100%;border-collapse:collapse;font-size:15px;margin-top:8px}
+.formula td{padding:9px 0;border-top:1px solid var(--hero-line);vertical-align:top}
+.formula td:first-child{color:var(--hero-ink-2);width:42%;padding-right:12px}
+.formula code{color:#5eead4;font-size:15px}
+.calc{display:grid;gap:14px}
+.calc .row{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.calc label{display:flex;flex-direction:column;gap:4px;font-size:13px;color:var(--muted);font-weight:600}
+.calc input[type=number]{font:inherit;font-size:16px;padding:8px 10px;border-radius:9px;border:1px solid var(--line-2);background:var(--surface);color:var(--ink);width:100%;font-variant-numeric:tabular-nums}
+.calc .checks{display:flex;gap:18px;flex-wrap:wrap;font-size:15px}
+.calc .checks label{flex-direction:row;align-items:center;gap:8px;color:var(--ink-2);font-weight:500;font-size:15px}
+.presets{display:flex;flex-wrap:wrap;gap:6px}
+.presets button{font:inherit;font-size:13px;padding:5px 10px;border-radius:999px;border:1px solid var(--line-2);background:var(--surface);color:var(--ink-2);cursor:pointer}
+.presets button:hover{border-color:var(--accent);color:var(--accent)}
+.out{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.out div{background:var(--surface-2);border-radius:12px;padding:12px 14px}
+.out b{display:block;font-size:26px;font-weight:700;letter-spacing:-.02em}
+.out span{font-size:13px;color:var(--muted)}
+.why{font-size:14px;color:var(--ink-2);background:var(--accent-soft);border-radius:10px;padding:10px 12px;margin:0}
+
+/* tables + charts */
+.tbl-wrap{overflow-x:auto;border:1px solid var(--line);border-radius:var(--radius);background:var(--surface);box-shadow:var(--shadow)}
+table.data{width:100%;border-collapse:collapse;font-size:15px;min-width:640px}
+table.data th,table.data td{padding:11px 14px;text-align:left;border-bottom:1px solid var(--line);vertical-align:middle}
+table.data th{font-size:12px;letter-spacing:.04em;text-transform:uppercase;color:var(--muted);font-weight:650;background:var(--surface-2)}
+table.data td.num,table.data th.num{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
+table.data tr:last-child td{border-bottom:0}
+table.data tbody tr:hover{background:color-mix(in srgb,var(--surface-2) 60%,transparent)}
+.barcell{width:34%;min-width:220px}
+.bar{position:relative;height:28px;display:flex;align-items:center}
+.bar .zero{position:absolute;top:2px;bottom:2px;width:1px;background:var(--axis)}
+.bar .fill{position:absolute;top:8px;height:12px}
+.bar .fill.pos{background:var(--pos);border-radius:0 4px 4px 0}
+.bar .fill.neg{background:var(--neg);border-radius:4px 0 0 4px}
+.bar .val{position:absolute;font-size:13px;font-variant-numeric:tabular-nums;color:var(--ink);white-space:nowrap}
+.legend{display:flex;gap:16px;flex-wrap:wrap;font-size:13px;color:var(--ink-2);margin:12px 2px 0}
+.legend i{display:inline-block;width:12px;height:12px;border-radius:3px;margin-right:6px;vertical-align:-1px}
+.tip{position:fixed;z-index:50;pointer-events:none;background:var(--surface);color:var(--ink);border:1px solid var(--line-2);border-radius:10px;padding:10px 12px;font-size:13px;line-height:1.45;box-shadow:var(--shadow);max-width:260px;opacity:0;transition:opacity .08s}
+.tip b{display:block;margin-bottom:2px}
+.ci{margin-top:4px;padding:0 6px}
+.ci-row{padding:10px 0 6px}
+.ci-head{display:flex;justify-content:space-between;align-items:baseline;gap:4px 12px;flex-wrap:wrap;margin-bottom:6px}
+.ci-row .nm{font-weight:600;font-size:15px}
+.ci-row .lab{font-size:14px;color:var(--ink-2);font-variant-numeric:tabular-nums}
+.ci-svg{width:100%;height:24px;overflow:visible;display:block}
+.ci-axis{position:relative;height:18px;font-size:12px;color:var(--muted);margin:4px 6px 0;font-variant-numeric:tabular-nums}
+.ci-axis span{position:absolute;top:0;transform:translateX(-50%)}
+.ci-axis span:first-child{transform:none}
+.ci-axis span:last-child{transform:translateX(-100%)}
+
+/* tiles */
+.tiles{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+@media (max-width:920px){.tiles{grid-template-columns:1fr 1fr}}
+@media (max-width:480px){.tiles{grid-template-columns:1fr}}
+.tile{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:18px;box-shadow:var(--shadow)}
+.tile .lbl{font-size:13px;color:var(--muted);font-weight:600}
+.tile .val{font-size:30px;font-weight:700;letter-spacing:-.02em;line-height:1.15;margin:6px 0 4px}
+.tile .val s{text-decoration:none;color:var(--muted);font-weight:500;font-size:20px}
+.tile .note{font-size:13px;color:var(--ink-2);line-height:1.4}
+
+/* timeline */
+.timeline{list-style:none;margin:0;padding:0;border-left:2px solid var(--line-2);margin-left:8px}
+.timeline li{position:relative;padding:0 0 18px 22px}
+.timeline li::before{content:"";position:absolute;left:-7px;top:6px;width:12px;height:12px;border-radius:50%;background:var(--surface);border:2px solid var(--accent)}
+.timeline b{display:block;font-size:15px}
+.timeline span{font-size:15px;color:var(--ink-2)}
+blockquote{margin:0;padding:20px 22px;border-left:4px solid var(--accent);background:var(--surface);border-radius:0 var(--radius) var(--radius) 0;font-size:18px;line-height:1.5;color:var(--ink)}
+blockquote footer{font-size:14px;color:var(--muted);margin-top:8px}
+
+/* code */
+.code{position:relative;margin:0 0 16px}
+.code pre{margin:0;background:var(--code-bg);color:var(--code-ink);border-radius:12px;padding:16px 84px 16px 18px;font-size:14px;line-height:1.6;overflow-x:auto}
+.code .cp{position:absolute;top:10px;right:10px;font:inherit;font-size:12px;padding:4px 9px;border-radius:7px;border:1px solid #2b4a63;background:#13314a;color:#cfe0ee;cursor:pointer}
+.code .cp:hover{background:#1b3f5d}
+.shot{border-radius:var(--radius);border:1px solid var(--line);box-shadow:var(--shadow);overflow:hidden;background:var(--surface)}
+ul.clean{margin:0;padding-left:20px}
+ul.clean li{margin:0 0 8px;color:var(--ink-2)}
+ul.clean li b{color:var(--ink)}
+footer.site{background:var(--hero);color:var(--hero-ink-2);padding:36px 0;font-size:14px}
+footer.site a{color:var(--hero-ink)}
+footer.site .wrap{display:flex;flex-wrap:wrap;gap:16px 32px;justify-content:space-between;align-items:center}
+@media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+
+<nav class="nav" aria-label="Sections">
+  <div class="wrap">
+    <a class="brand" href="#top">
+      <svg width="24" height="24" viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="7" fill="#14304a"/><rect x="6" y="9" width="8" height="14" rx="2" fill="#14b8a6"/><rect x="18" y="9" width="8" height="14" rx="2" fill="none" stroke="#14b8a6" stroke-width="2"/></svg>
+      <span class="bt">Visual Repair Lab</span>
+    </a>
+    <ul>
+      <li class="opt"><a href="#problem">Problem</a></li>
+      <li><a href="#how">How it works</a></li>
+      <li class="opt"><a href="#tasks">Tasks</a></li>
+      <li class="opt2"><a href="#rewards">Rewards</a></li>
+      <li><a href="#results">Results</a></li>
+      <li class="opt"><a href="#engineering">Engineering</a></li>
+      <li><a href="#run">Run it</a></li>
+      <li><a class="gh" href="https://github.com/tusu18/visual-repair-lab">GitHub</a></li>
+    </ul>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <div class="wrap hero-grid">
+    <div>
+      <p class="eyebrow">RL environment &middot; benchmark &middot; reward design</p>
+      <h1>Visual Repair Lab</h1>
+      <p class="lede">An environment where AI agents <strong>debug interactive visual software</strong>. The agent compares an approved reference with a buggy candidate, chooses its own experiments, repairs the code, and submits to a <strong>protected grader</strong> that checks behavior across states the agent may never have tried.</p>
+      <div class="btns">
+        <a class="btn primary" href="https://github.com/tusu18/visual-repair-lab">View the code</a>
+        <a class="btn ghost" href="#run">Run it locally</a>
+      </div>
+      <ul class="stats">
+        <li><b>134</b><span>certified tasks in three families</span></li>
+        <li><b>307/307</b><span>package tests passing on macOS and Linux</span></li>
+        <li><b>63</b><span>frontier-model attempts, replayed exactly</span></li>
+        <li><b>360</b><span>trajectory GPT baseline on 120 shared worlds</span></li>
+      </ul>
+    </div>
+    <figure class="hero-fig">
+      <img src="assets/probe-1.png" width="1200" height="700" alt="Side-by-side frames: approved reference on the left, current candidate on the right. At zoom 0.8 the reference's right-hand endpoints sit 15 pixels lower than the candidate's.">
+      <figcaption>A real observation from task train-0028. After one zoom experiment the reference (left) and the candidate (right) disagree at the right-hand endpoints of all three series, not only at S3.</figcaption>
+    </figure>
+  </div>
+</header>
+
+<main>
+
+<section id="problem">
+  <div class="wrap">
+    <p class="kicker">The problem</p>
+    <h2>A matching screen is not a working fix</h2>
+    <p class="sub">Coding agents can make the current frame look right and still leave the software wrong. Visual Repair Lab measures the whole repair loop: find the cause, fix it, and choose a test that could expose an incomplete fix.</p>
+    <ol class="story">
+      <li><b>Boxes shift on portrait frames</b><span>Detection boxes line up on landscape video but drift on portrait frames.</span></li>
+      <li><b>Isolate the cause</b><span>The agent changes the frame shape while holding the detections constant and finds wrong letterbox padding.</span></li>
+      <li><b>The first patch is incomplete</b><span>It fixes the horizontal padding and misses the vertical padding. The current screen now looks right.</span></li>
+      <li><b>A good test catches it</b><span>Trying another aspect ratio exposes the remaining error. Protected cases then grade the final repair.</span></li>
+    </ol>
+    <p class="muted small" style="margin-top:18px">This example mirrors the held-out detection-overlay family. All tasks are controlled procedural versions of real engineering problems; how well they transfer to production code is a hypothesis to test.</p>
+  </div>
+</section>
+
+<section id="how">
+  <div class="wrap">
+    <p class="kicker">How it works</p>
+    <h2>One episode, from first look to protected grade</h2>
+    <p class="sub">Each environment action costs one unit of a fixed budget. The agent decides what to inspect, which interaction separates possible causes, and when it has enough evidence to submit. No verification sequence is prescribed.</p>
+    <ol class="loop" aria-label="Episode loop">
+      <li><span class="node">Observe<small>reference + candidate</small></span><span class="arrow" aria-hidden="true">&rarr;</span></li>
+      <li><span class="node">Experiment<small>drag, zoom, brush, advance</small></span><span class="arrow" aria-hidden="true">&rarr;</span></li>
+      <li><span class="node">Edit<small>saves a revision</small></span><span class="arrow" aria-hidden="true">&rarr;</span></li>
+      <li><span class="node">Run<small>activates it</small></span><span class="arrow" aria-hidden="true">&rarr;</span></li>
+      <li><span class="node">Test<small>try to break the fix</small></span><span class="arrow" aria-hidden="true">&rarr;</span></li>
+      <li><span class="node grader">Submit<small>protected grader</small></span></li>
+    </ol>
+
+    <div class="viewer" id="viewer">
+      <div class="stage"><img id="vimg" src="assets/probe-0.png" width="1200" height="700" alt=""></div>
+      <div class="panel">
+        <div class="steps" role="group" aria-label="Episode steps" id="vsteps"></div>
+        <h3 id="vtitle"></h3>
+        <p id="vtext" style="margin:0;color:var(--ink-2)"></p>
+        <pre id="vjson" aria-label="Action sent to the environment"></pre>
+        <div class="ledger">
+          <div><b id="vrew"></b><span>step reward</span></div>
+          <div><b id="vret"></b><span>episode return</span></div>
+          <div><b id="vbud"></b><span>budget used</span></div>
+        </div>
+        <p class="muted small" style="margin:0">Scripted probe against the live v7 server on task train-0028 (Chart &amp; brush, one hidden rule, budget 16). Not a model run.</p>
+        <div class="nav-btns"><button id="vprev" type="button">&larr; Previous</button><button id="vnext" type="button">Next &rarr;</button></div>
+      </div>
+    </div>
+
+    <div class="grid2" style="margin-top:28px">
+      <div class="card">
+        <h3>What the agent receives</h3>
+        <ul class="clean">
+          <li>Rendered reference and candidate, one current image per decision</li>
+          <li>Public state and event history, saved and active code, revision IDs</li>
+          <li>Controls with valid argument ranges, action examples, remaining budget</li>
+          <li>The supported Python subset (<code>def solve(state)</code>)</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>What stays inside the evaluator</h3>
+        <ul class="clean">
+          <li>Hidden rules and their numeric values</li>
+          <li>Reference programs and protected grading cases</li>
+          <li>Starting grade, curriculum specs and private reward ledgers</li>
+          <li>Banks and databases, behind an HTTP boundary on a separate filesystem</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="tasks">
+  <div class="wrap">
+    <p class="kicker">Task families</p>
+    <h2>Bugs that a single frame can hide</h2>
+    <p class="sub">Three families form the generated training distribution. A fourth, detection overlay, is supported by the evaluator and held out as a whole family.</p>
+    <div class="grid4">
+      <div class="card fam">
+        <img src="assets/family-drag.png" width="1200" height="700" alt="Drag task: four cards labelled A to D in the reference and the candidate" loading="lazy">
+        <span class="tag">Drag &middot; 33 tasks</span>
+        <dl><dt>Investigates</dt><dd>Pointer capture, layout thresholds, pointer scaling, conditional drawing</dd>
+        <dt>Hidden failure</dt><dd>A card moves correctly until capture leaves it or the layout changes</dd></dl>
+      </div>
+      <div class="card fam">
+        <img src="assets/probe-0.png" width="1200" height="700" alt="Chart task: three line series; the reference S3 line sits at y 470, the candidate at 455" loading="lazy">
+        <span class="tag">Chart &amp; brush &middot; 63 tasks</span>
+        <dl><dt>Investigates</dt><dd>Shared transforms, projection, clipping, linked selection</dd>
+        <dt>Hidden failure</dt><dd>The current view works while another view or transform breaks</dd></dl>
+      </div>
+      <div class="card fam">
+        <img src="assets/family-physics.png" width="1200" height="700" alt="Physics task: a falling body above a floor and next to a wall" loading="lazy">
+        <span class="tag">Contact dynamics &middot; 38 tasks</span>
+        <dl><dt>Investigates</dt><dd>Integration order, limits, collisions, reported contact state</dd>
+        <dt>Hidden failure</dt><dd>A short motion agrees; a longer run or higher speed fails</dd></dl>
+      </div>
+      <div class="card fam">
+        <div class="ph">Held out: not shipped in the public bank</div>
+        <span class="tag hold">Detection overlay &middot; held out</span>
+        <dl><dt>Investigates</dt><dd>Box padding, confidence cutoffs, suppression, labels, clipping</dd>
+        <dt>Hidden failure</dt><dd>A plausible overlay disagrees after the aspect ratio or overlap changes</dd></dl>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="generation">
+  <div class="wrap">
+    <p class="kicker">Generation and certification</p>
+    <h2>Tasks are generated, then proven gradable</h2>
+    <p class="sub">Each task combines a family, a hidden base world, one to three ordered conditional rules, a starting candidate, a budget and a split. Rules are built from six blocks: limits, gains, thresholds, snapping, offsets and operation order. A verifier, not a model's opinion, decides what gets in.</p>
+    <ol class="pipe">
+      <li><b>Source parity</b><span>With added rules disabled, the task matches its base world exactly.</span></li>
+      <li><b>Reference agreement</b><span>Valid output that agrees with an independent reference in the real interpreter.</span></li>
+      <li><b>Omission witnesses</b><span>At least two protected cases per rule that fail if the rule is left out.</span></li>
+      <li><b>Control contract</b><span>Every rule is reachable through the generic public controls.</span></li>
+      <li><b>Distinct behavior</b><span>The bug is observable, so a careful agent can find it.</span></li>
+    </ol>
+    <div class="grid2">
+      <div class="card">
+        <h3>Release generation run</h3>
+        <div class="funnel"><span class="n">200</span><span class="l">tasks proposed</span><span class="ar" aria-hidden="true">&rarr;</span><span class="n">134</span><span class="l">admitted (67%)</span></div>
+        <p class="small muted" style="margin-top:14px">Rejected tasks are kept with reason codes. Grading runs submitted code on protected event histories and compares structured outputs with the reference (absolute tolerance 1e-6, relative 1e-9). A catalogue policy that sees only public observations solves every target with two actions to spare, which establishes finite solvability.</p>
+      </div>
+      <div class="card">
+        <h3>Adaptive curriculum</h3>
+        <p>Eight attempts estimate a task's pass rate <i>p</i> for a frozen checkpoint. Sampling priority is <i>p</i>(1&minus;<i>p</i>), highest near one half. Zero-success tasks are parked, tasks above 0.9 are retired, and an editor adds or drops rules and budget. Every child task is recertified.</p>
+        <p class="small muted">Adapts ideas from PLR, ACCEL, PAIRED, learnability-based sampling and DAPO without claiming their published training results.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="rewards">
+  <div class="wrap">
+    <p class="kicker">Reward design</p>
+    <h2>Pay for improvement, not inherited correctness</h2>
+    <p class="sub">Let S be the checks the starting code already passes, F the checks the submitted code passes, and N the total. S stays private and fixed during the episode.</p>
+    <div class="grid2">
+      <div class="formula">
+        <h3>Terminal reward (evaluation mode)</h3>
+        <table>
+          <tr><td>Unchanged behavior (F = S)</td><td><code>0</code></td></tr>
+          <tr><td>Improvement (F &gt; S)</td><td><code>8 &times; (F&minus;S)/(N&minus;S)</code>, plus <code>2</code> for a full repair</td></tr>
+          <tr><td>Regression (F &lt; S)</td><td><code>&minus;2 &times; (S&minus;F)/N</code></td></tr>
+          <tr><td>Costs</td><td><code>&minus;0.025</code> per action, <code>&minus;0.1</code> per invalid action, <code>&minus;0.25</code> for submitting unactivated code, <code>&minus;2</code> for running out of budget without submitting</td></tr>
+        </table>
+        <p class="small" style="color:var(--hero-ink-2);margin:14px 0 0">The earlier formula paid for checks the starter already passed: unchanged code earned a positive return on <b style="color:var(--hero-ink)">89 of 134</b> tasks (median +1.2411). The v7 reward pays zero on all 134.</p>
+      </div>
+      <div class="card calc" id="calc">
+        <h3 style="margin:0">Try it</h3>
+        <div class="presets" id="presets" aria-label="Recorded cases"></div>
+        <div class="row">
+          <label>Start S<input type="number" id="cS" min="0" value="3"></label>
+          <label>Final F<input type="number" id="cF" min="0" value="121"></label>
+          <label>Total N<input type="number" id="cN" min="1" value="121"></label>
+        </div>
+        <div class="row">
+          <label>Actions<input type="number" id="cA" min="0" value="14"></label>
+          <label>Invalid actions<input type="number" id="cI" min="0" value="0"></label>
+          <label>&nbsp;<span class="checks" style="height:100%;align-items:center"><label><input type="checkbox" id="cSub" checked> Submitted</label></span></label>
+        </div>
+        <div class="checks"><label><input type="checkbox" id="cUn"> Submitted code was never activated</label></div>
+        <div class="out" aria-live="polite">
+          <div><b id="oT">0</b><span>terminal reward</span></div>
+          <div><b id="oC">0</b><span>costs</span></div>
+          <div><b id="oR">0</b><span>episode return</span></div>
+        </div>
+        <p class="why" id="oWhy"></p>
+      </div>
+    </div>
+
+    <div class="card" style="margin-top:24px">
+      <h3>Training-only process signals</h3>
+      <p class="small muted">Train mode adds bounded feedback so an agent learns even when every whole case still fails. None of it was applied in the seven-profile comparison below, and its benefit for learning is not yet demonstrated.</p>
+      <div class="tbl-wrap" style="box-shadow:none">
+        <table class="data" style="min-width:520px">
+          <thead><tr><th>Signal</th><th>Pays for</th><th class="num">Cap</th></tr></thead>
+          <tbody>
+            <tr><td>Repair progress</td><td>Field-level agreement above the starting value and previous high-water mark</td><td class="num">0.75</td></tr>
+            <tr><td>Test power</td><td>Exposing known omission mutants after a behavior-changing edit</td><td class="num">0.5 (0.1 per action)</td></tr>
+            <tr><td>Final-revision verification</td><td>Tests on the submitted revision that match the reference</td><td class="num">0.25</td></tr>
+            <tr><td>Visual comparison</td><td>Correctly comparing displayed reference and candidate values</td><td class="num">0.25</td></tr>
+            <tr><td>Prediction</td><td>Correctly predicting an observed consequence</td><td class="num">0.25</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="results">
+  <div class="wrap">
+    <p class="kicker">Results</p>
+    <h2>Seven model profiles, nine shared tasks</h2>
+    <p class="sub">Completed development comparison, October 30, 2026: 63 attempts, 60 submissions, 3 full repairs and no unscored slots. Each profile made one attempt per task in evaluation mode. All 63 returns were recomputed from the formula and matched within 1e-9.</p>
+
+    <div class="tbl-wrap">
+      <table class="data" id="cmp">
+        <thead><tr><th>Configured profile</th><th class="num">Full repairs</th><th class="num">Submitted</th><th class="num">Mean submitted checks</th><th class="num">Invalid actions</th><th>Mean return</th></tr></thead>
+        <tbody></tbody>
+      </table>
+    </div>
+    <div class="legend"><span><i style="background:var(--pos)"></i>Positive mean return</span><span><i style="background:var(--neg)"></i>Negative mean return</span><span class="muted">One shared scale; the vertical line marks zero.</span></div>
+    <p class="small muted" style="margin-top:14px">GPT-6 Astra repaired Chart 1 (3/121 to 121/121) and Drag 3 (48/129 to 129/129); Gemini 4 Argon also repaired Chart 1. Mean submitted checks average only submitted tasks, and high inherited correctness can coexist with a negative return. Results reflect these interfaces and inference settings on public development tasks; they are not a general model ranking.</p>
+
+    <div class="grid2" style="margin-top:36px">
+      <div class="card">
+        <h3>How the return is earned</h3>
+        <p class="small muted">Recorded cases from the comparison.</p>
+        <div class="tbl-wrap" style="box-shadow:none">
+          <table class="data" style="min-width:460px">
+            <thead><tr><th>Case</th><th class="num">Checks</th><th class="num">Actions</th><th class="num">Return</th></tr></thead>
+            <tbody>
+              <tr><td>Unchanged drag</td><td class="num">113 &rarr; 113 / 129</td><td class="num">1</td><td class="num">&minus;0.0250</td></tr>
+              <tr><td>Drag regression</td><td class="num">113 &rarr; 112 / 129</td><td class="num">16</td><td class="num">&minus;0.4155</td></tr>
+              <tr><td>Partial chart repair</td><td class="num">0 &rarr; 64 / 121</td><td class="num">10</td><td class="num">3.9814</td></tr>
+              <tr><td>Full chart repair</td><td class="num">3 &rarr; 121 / 121</td><td class="num">14</td><td class="num">9.6500</td></tr>
+              <tr><td>Full drag repair</td><td class="num">48 &rarr; 129 / 129</td><td class="num">44</td><td class="num">8.9000</td></tr>
+              <tr><td>Physics, never submitted</td><td class="num">start 36 / 109</td><td class="num">48</td><td class="num">&minus;7.4000</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="card">
+        <h3>Historical GPT baseline (v6)</h3>
+        <p class="small muted">360 trajectories: three profiles on the same 120 worlds, 30 per family. Full-repair rate with 95% Wilson intervals. Earlier reward definition; not pooled with the comparison above.</p>
+        <div class="ci" id="ci"></div>
+        <div class="ci-axis" aria-hidden="true"><span style="left:0">0%</span><span style="left:33.33%">10%</span><span style="left:66.67%">20%</span><span style="left:100%">30%</span></div>
+        <p class="small muted" style="margin-top:12px">Paired exact tests on matched worlds: Sol vs Terra 21 vs 4 discordant successes, Sol vs GPT 5.6 19 vs 1 (Holm-adjusted p = 0.00273 and 0.000160). The hard stratum produced 0, 1 and 0 full repairs out of 40.</p>
+      </div>
+    </div>
+
+    <h3 style="margin:40px 0 14px;font-size:22px">What the traces reveal</h3>
+    <div class="grid3">
+      <div class="card"><span class="tag">Chart episode 000</span><h3>Tests can confirm the wrong explanation</h3><p class="small" style="color:var(--ink-2)">The final patch stored a transform per view; the reference shares one across views and clips x to 70&ndash;400 everywhere. All four final tests matched while 42 of 121 protected checks failed.</p></div>
+      <div class="card"><span class="tag">Drag episode 001</span><h3>Sparse evidence leaves boundary errors</h3><p class="small" style="color:var(--ink-2)">127 of 129 checks passed. The code entered the wide layout at width 480; the reference does above 460. A reset and resize to 461 exposes it. No interaction followed the final activation.</p></div>
+      <div class="card"><span class="tag">Chart episode 049</span><h3>Execution failures need their own category</h3><p class="small" style="color:var(--ink-2)">A final edit containing invalid Python was submitted without activation on the last action, scoring 0 of 121. That is a workflow failure under budget, not a semantic repair error.</p></div>
+    </div>
+    <div class="tbl-wrap" style="margin-top:20px">
+      <table class="data" style="min-width:600px">
+        <thead><tr><th>v6 failure diagnostics (categories overlap)</th><th class="num">GPT 6.1 Sol</th><th class="num">GPT 6.1 Terra</th><th class="num">GPT 5.6 Sol</th></tr></thead>
+        <tbody>
+          <tr><td>Failed submitted episodes</td><td class="num">95</td><td class="num">112</td><td class="num">114</td></tr>
+          <tr><td>Active output matched, protected checks failed</td><td class="num">85</td><td class="num">86</td><td class="num">105</td></tr>
+          <tr><td>All chosen tests matched, protected checks failed</td><td class="num">28</td><td class="num">39</td><td class="num">15</td></tr>
+          <tr><td>Failed with no test after the final revision</td><td class="num">60</td><td class="num">54</td><td class="num">92</td></tr>
+          <tr><td>Submitted revision never activated</td><td class="num">5</td><td class="num">9</td><td class="num">0</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="small muted" style="margin-top:12px">The interface is part of the measured difficulty: one profile produced 85 format failures in 154 calls and another 60 in 245, and malformed responses consumed budget like any other action.</p>
+  </div>
+</section>
+
+<section id="engineering">
+  <div class="wrap">
+    <p class="kicker">Engineering</p>
+    <h2>Measurement you can audit</h2>
+    <p class="sub">Recorded trajectories were replayed independently from their saved inputs, and the release receipts for tests, concurrency and the reward audit ship in the repository&rsquo;s <code>validation</code> folder.</p>
+    <div class="tiles">
+      <div class="tile"><div class="lbl">8 concurrent episodes &times; 8 steps</div><div class="val">5.84 s <s>from 72.24 s</s></div><div class="note">Incremental checkpoints replaced full-history replay under a global write lock.</div></div>
+      <div class="tile"><div class="lbl">Worst concurrent step</div><div class="val">0.49 s <s>from 18.76 s</s></div><div class="note">All 64 of 64 concurrent steps accepted, zero worker failures.</div></div>
+      <div class="tile"><div class="lbl">Exact replay, comparison study</div><div class="val">1,269 actions</div><div class="note">63 trajectories and 1,332 observations, no replay failures. The v6 study replayed 8,262 actions.</div></div>
+      <div class="tile"><div class="lbl">Package tests</div><div class="val">307 / 307</div><div class="note">macOS arm64 (Python 3.13), Linux arm64 (3.12), and re-run on Linux x86_64 (3.13) in 112 s.</div></div>
+    </div>
+    <div class="grid2" style="margin-top:28px">
+      <div class="card">
+        <h3>Design choices</h3>
+        <ul class="clean">
+          <li><b>Data-only checkpoints.</b> Compressed, digest-checked JSON; no pickle and no actor-supplied state. Code, RNG, credit sets and ledgers persist.</li>
+          <li><b>Idempotent steps.</b> Duplicate request IDs return the saved response; competing decisions on one episode get a conflict; a crashed worker leaves the last state intact.</li>
+          <li><b>Runtime and bank seals.</b> Changed code or tasks require a new database instead of a silent resume.</li>
+          <li><b>Separated roles.</b> Generator, evaluator and actor run apart. The actor only ever sees public HTTP responses.</li>
+          <li><b>Restricted Python.</b> Candidate code runs in a bounded interpreter. It is a research control, not an OS sandbox.</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>How the design evolved</h3>
+        <ol class="timeline">
+          <li><b>Stage 1&ndash;2</b><span>Source-only runs solved early tasks, so the specification moved into image-dependent reference behavior and the agent began choosing its own experiments.</span></li>
+          <li><b>Stage 3&ndash;4</b><span>Setting menus hidden, budgets reduced; process diagnostics, revision binding and explicit execution contracts added.</span></li>
+          <li><b>Stage 5&ndash;6</b><span>Typed generation, certificates, an actor-only client, independent references and 120 matched worlds per model.</span></li>
+          <li><b>Stage 7</b><span>Unchanged code could earn reward and concurrent steps serialized; fixed with relative rewards and incremental state.</span></li>
+        </ol>
+      </div>
+    </div>
+    <blockquote style="margin-top:28px">Debug the measurement system before interpreting a model score. A transport interruption is not a failed repair. Unsupported interpreter syntax is not automatically a bad algorithm. A matching screen is not evidence that all relevant states were tested.<footer>From the engineering report</footer></blockquote>
+  </div>
+</section>
+
+<section id="run">
+  <div class="wrap">
+    <p class="kicker">Run it</p>
+    <h2>Local evaluator in two commands</h2>
+    <p class="sub">Python 3.11&ndash;3.13 on macOS or Linux. No API key or GPU is needed for the evaluator.</p>
+    <div class="grid2">
+      <div>
+        <div class="code"><button class="cp" type="button">Copy</button><pre><code>git clone https://github.com/tusu18/visual-repair-lab
+cd visual-repair-lab
+bash scripts/install.sh
+bash scripts/start_lab.sh   # open http://127.0.0.1:8822/</code></pre></div>
+        <div class="code"><button class="cp" type="button">Copy</button><pre><code># or in a clean container
+docker compose up --build</code></pre></div>
+        <div class="code"><button class="cp" type="button">Copy</button><pre><code># full test suite and release checks
+.venv/bin/python -m pip install -r requirements-test.lock
+.venv/bin/python scripts/run_tests.py --output validation/local --timeout 420
+.venv/bin/python scripts/validate_v7.py</code></pre></div>
+      </div>
+      <div class="card">
+        <h3>Benchmark your own model</h3>
+        <p>Open <b>Benchmark a model</b> in the GUI, point it at a local OpenAI-compatible image-input endpoint, choose tasks and repetitions, and start. One attempt per task gives a baseline; eight estimate mixed-outcome groups.</p>
+        <p>For a wiring check without inference, run <code>scripts/mock_model.py --port 8008</code> and use model <code>scripted-submit-smoke</code>. It always submits the starting code and earns no terminal reward.</p>
+        <p class="small muted">Keep the evaluator, banks and databases out of the model's filesystem. Run the actor as a separate user, container or machine that talks to the public HTTP endpoint only.</p>
+      </div>
+    </div>
+    <figure class="shot" style="margin:28px 0 0">
+      <img src="assets/gui.webp" width="1440" height="900" alt="Visual Repair Lab operator GUI with task train-0028 loaded: episode controls on the left and the reference and candidate observation on the right" loading="lazy">
+    </figure>
+  </div>
+</section>
+
+<section id="limits">
+  <div class="wrap">
+    <p class="kicker">Scope</p>
+    <h2>What this does not show yet</h2>
+    <div class="grid2">
+      <ul class="clean">
+        <li><b>No model weights were trained.</b> Whether RL on these tasks improves a model needs a before-and-after experiment on fresh private worlds.</li>
+        <li><b>The 134 bundled tasks are public development data,</b> not a holdout. A private evaluation needs a separately generated, access-controlled bank.</li>
+        <li><b>Finite tests are not proof.</b> Reference parity and adversarial tests cover known cases, not every possible program.</li>
+      </ul>
+      <ul class="clean">
+        <li><b>Process rewards are unvalidated for learning.</b> Field progress can rise without solving whole cases; test power counts exposure, not understanding.</li>
+        <li><b>Numeric footers are visible in image mode.</b> Footer-free and text-only arms exist to separate visual reasoning from reading numbers.</li>
+        <li><b>Rendering is two-dimensional,</b> and detection-overlay tasks measure post-processing repair, not detector accuracy on real photos.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="site">
+  <div class="wrap">
+    <span>Built by <a href="https://tusu18.github.io/portfolio">Tushar Singh</a> &middot; MIT License &middot; tests last re-run November 8, 2026</span>
+    <span><a href="https://github.com/tusu18/visual-repair-lab">GitHub</a> &middot; <a href="https://github.com/tusu18/visual-repair-lab/blob/main/docs/REWARD_V7.md">Reward spec</a> &middot; <a href="https://github.com/tusu18/visual-repair-lab/blob/main/docs/LIMITATIONS_V7.md">Limitations</a> &middot; <a href="https://linkedin.com/in/tushar-singh-4326b7188">LinkedIn</a></span>
+  </div>
+</footer>
+
+<div class="tip" id="tip" role="tooltip"></div>
+
+<script>
+(function(){
+  // ---------- episode viewer (real frames and rewards from a scripted probe) ----------
+  var steps=[
+    {t:"Start: initial observation",x:"Only S3 differs. The reference draws it at y 470.0, the candidate at y 455.0. Everything else matches.",a:'// no action yet',r:"0.000",R:"0.000",b:"0 / 16"},
+    {t:"Experiment 1: zoom out",x:"At zoom 0.8 the difference moves: the right-hand endpoints of S1, S2 and S3 now sit 15 px lower in the reference, while S3's left endpoint matches. A constant shift on S3 cannot explain both frames.",a:'{"type": "interact",\n "event": {"kind": "set_transform",\n           "zoom": 0.8,\n           "pan_x": 0, "pan_y": 0}}',r:"-0.025",R:"-0.025",b:"1 / 16"},
+    {t:"Experiment 2: switch view",x:"View B shows the same differences as before, so this view switch does not trigger anything new.",a:'{"type": "interact",\n "event": {"kind": "set_view", "context": "B"}}',r:"-0.025",R:"-0.050",b:"2 / 16"},
+    {t:"Experiment 3: brush the plot",x:"Both select S1, S2 and S3, so the selection logic agrees.",a:'{"type": "interact",\n "event": {"kind": "brush",\n           "x0": 0, "y0": 100,\n           "x1": 600, "y1": 600,\n           "mode": "replace"}}',r:"-0.025",R:"-0.075",b:"3 / 16"},
+    {t:"Submit the unchanged code",x:"The protected grader scores 3 of 121 checks, the same as the start. Unchanged behavior earns zero terminal reward, so the return is just the four action costs.",a:'{"type": "submit"}\n// final_result: success false,\n//   passed 3 of 121',r:"-0.025",R:"-0.100",b:"4 / 16"}
+  ];
+  var i=0,box=document.getElementById('vsteps');
+  steps.forEach(function(s,k){var b=document.createElement('button');b.type='button';b.textContent=k===0?'Start':'Step '+k;b.setAttribute('aria-pressed','false');b.onclick=function(){show(k)};box.appendChild(b)});
+  function show(k){i=k;var s=steps[k];
+    var img=document.getElementById('vimg');img.src=(window.__A&&window.__A['probe-'+k+'.png'])||('assets/probe-'+k+'.png');img.alt='Reference and candidate after '+s.t.toLowerCase();
+    document.getElementById('vtitle').textContent=s.t;document.getElementById('vtext').textContent=s.x;
+    document.getElementById('vjson').textContent=s.a;document.getElementById('vrew').textContent=s.r.replace('-','−');
+    document.getElementById('vret').textContent=s.R.replace('-','−');document.getElementById('vbud').textContent=s.b;
+    Array.prototype.forEach.call(box.children,function(b,j){b.setAttribute('aria-pressed',j===k?'true':'false')});
+    document.getElementById('vprev').disabled=k===0;document.getElementById('vnext').disabled=k===steps.length-1;}
+  document.getElementById('vprev').onclick=function(){if(i>0)show(i-1)};
+  document.getElementById('vnext').onclick=function(){if(i<steps.length-1)show(i+1)};
+  document.getElementById('viewer').addEventListener('keydown',function(e){if(e.key==='ArrowRight'&&i<steps.length-1)show(i+1);if(e.key==='ArrowLeft'&&i>0)show(i-1)});
+  for(var p=1;p<steps.length;p++){var im=new Image();im.src=(window.__A&&window.__A['probe-'+p+'.png'])||('assets/probe-'+p+'.png')}
+  show(0);
+
+  // ---------- reward calculator (v7 relative-start reward) ----------
+  var presets=[
+    {n:"Full chart repair",S:3,F:121,N:121,A:14,I:0,sub:true,un:false},
+    {n:"Partial chart repair",S:0,F:64,N:121,A:10,I:0,sub:true,un:false},
+    {n:"Drag regression",S:113,F:112,N:129,A:16,I:0,sub:true,un:false},
+    {n:"Unchanged submit",S:113,F:113,N:129,A:1,I:0,sub:true,un:false},
+    {n:"Never submitted",S:36,F:36,N:109,A:48,I:42,sub:false,un:false}
+  ];
+  var pb=document.getElementById('presets');
+  presets.forEach(function(p){var b=document.createElement('button');b.type='button';b.textContent=p.n;b.onclick=function(){set(p)};pb.appendChild(b)});
+  function $(id){return document.getElementById(id)}
+  function set(p){$('cS').value=p.S;$('cF').value=p.F;$('cN').value=p.N;$('cA').value=p.A;$('cI').value=p.I;$('cSub').checked=p.sub;$('cUn').checked=p.un;calc()}
+  function fmt(v){var s=(Math.round(v*10000)/10000).toFixed(4).replace(/\.?0+$/,'');if(s==='-0')s='0';return s.replace('-','−')}
+  function calc(){
+    var N=Math.max(1,+$('cN').value||1),S=Math.min(N,Math.max(0,+$('cS').value||0)),F=Math.min(N,Math.max(0,+$('cF').value||0));
+    var A=Math.max(0,+$('cA').value||0),I=Math.max(0,+$('cI').value||0),sub=$('cSub').checked,un=$('cUn').checked&&sub;
+    $('cUn').disabled=!sub;$('cF').disabled=!sub;
+    var T=0,why;
+    if(!sub){T=0;why='No submission: no terminal reward, and running out of budget costs 2.';}
+    else if(F===S){why='F = S: unchanged behavior earns zero, even if the starting code was mostly right.';}
+    else if(F>S){T=8*(F-S)/(N-S)+(F===N?2:0);why='Repaired '+(F-S)+' of '+(N-S)+' initially failing checks'+(F===N?', plus 2 for a full repair.':'.');}
+    else {T=-2*(S-F)/N;why='Regression: lost '+(S-F)+' of '+N+' checks the starting code passed.';}
+    var C=0.025*A+0.1*I+(un?0.25:0)+(!sub?2:0);
+    $('oT').textContent=fmt(T);$('oC').textContent=fmt(-C);$('oR').textContent=fmt(T-C);$('oWhy').textContent=why;
+  }
+  ['cS','cF','cN','cA','cI','cSub','cUn'].forEach(function(id){$(id).addEventListener('input',calc);$(id).addEventListener('change',calc)});
+  calc();
+
+  // ---------- seven-profile comparison (Oct 30, 2026 report) ----------
+  var rows=[
+    {m:"GPT-6 Astra",full:2,sub:"9/9",chk:"72.4%",inv:0,ret:4.081,act:240,tests:"2/9"},
+    {m:"Gemini 4 Argon",full:1,sub:"9/9",chk:"66.5%",inv:1,ret:3.173,act:221,tests:"3/9"},
+    {m:"Sonnet 5.5",full:0,sub:"9/9",chk:"44.7%",inv:0,ret:1.318,act:93,tests:"5/9"},
+    {m:"GPT-6 Sol",full:0,sub:"9/9",chk:"36.6%",inv:3,ret:0.333,act:198,tests:"6/9"},
+    {m:"Muse Glimmer 30B",full:0,sub:"9/9",chk:"30.0%",inv:16,ret:-0.552,act:118,tests:"9/9"},
+    {m:"Nemotron 3.5 VL",full:0,sub:"7/9",chk:"34.7%",inv:92,ret:-1.956,act:154,tests:"6/7"},
+    {m:"Qwen3.8 27B",full:0,sub:"8/9",chk:"33.1%",inv:121,ret:-2.354,act:245,tests:"6/8"}
+  ];
+  var D0=-4,D1=5,P0=10,P1=88,BX=function(v){return P0+(v-D0)/(D1-D0)*(P1-P0)},Z=BX(0),tb=document.querySelector('#cmp tbody'),tip=$('tip');
+  rows.forEach(function(r){
+    var tr=document.createElement('tr'),xv=BX(r.ret),pos=r.ret>=0,left=pos?Z:xv,w=Math.abs(xv-Z);
+    var val=(pos?'':'−')+Math.abs(r.ret).toFixed(3);
+    var lblPos=pos?('left:calc('+xv.toFixed(2)+'% + 6px)'):('right:calc('+(100-xv).toFixed(2)+'% + 6px)');
+    tr.innerHTML='<td>'+r.m+'</td><td class="num">'+r.full+'/9</td><td class="num">'+r.sub+'</td><td class="num">'+r.chk+'</td><td class="num">'+r.inv+'</td>'+
+      '<td class="barcell"><div class="bar" tabindex="0" aria-label="'+r.m+' mean return '+val+'"><span class="zero" style="left:'+Z.toFixed(2)+'%"></span><span class="fill '+(pos?'pos':'neg')+'" style="left:'+left.toFixed(2)+'%;width:'+w.toFixed(2)+'%"></span><span class="val" style="'+lblPos+'">'+val+'</span></div></td>';
+    var bar=tr.querySelector('.bar');
+    function on(e){tip.innerHTML='<b>'+r.m+'</b>Mean return '+val+'<br>'+r.full+' full repairs, '+r.sub+' submitted<br>'+r.act+' actions, '+r.inv+' invalid<br>No final-revision tests: '+r.tests;
+      tip.style.opacity=1;var rc=bar.getBoundingClientRect(),x=(e&&e.clientX)?e.clientX:rc.left+rc.width/2,y=(e&&e.clientY)?e.clientY:rc.top;
+      var tw=tip.offsetWidth;tip.style.left=Math.max(8,Math.min(window.innerWidth-tw-8,x-tw/2))+'px';tip.style.top=Math.max(8,y-tip.offsetHeight-14)+'px';}
+    function off(){tip.style.opacity=0}
+    bar.addEventListener('mousemove',on);bar.addEventListener('mouseleave',off);bar.addEventListener('focus',function(){on()});bar.addEventListener('blur',off);
+    tb.appendChild(tr);
+  });
+
+  // ---------- v6 baseline: full-repair rate with 95% Wilson intervals ----------
+  var ci=[
+    {m:"GPT 6.1 Sol",k:25,n:120,p:20.8,lo:14.5,hi:28.9},
+    {m:"GPT 6.1 Terra",k:8,n:120,p:6.7,lo:3.4,hi:12.6},
+    {m:"GPT 5.6 Sol",k:6,n:120,p:5.0,lo:2.3,hi:10.5}
+  ],host=$('ci'),X=function(v){return (v/30*100).toFixed(2)+'%'};
+  ci.forEach(function(d){
+    var row=document.createElement('div');row.className='ci-row';
+    var grid=[0,10,20,30].map(function(g){return '<line x1="'+X(g)+'" x2="'+X(g)+'" y1="2" y2="22" stroke="var(--grid)" stroke-width="1"/>'}).join('');
+    row.innerHTML='<div class="ci-head"><span class="nm">'+d.m+'</span><span class="lab">'+d.k+'/'+d.n+' &middot; '+d.p.toFixed(1)+'% (95% CI '+d.lo+'&ndash;'+d.hi+')</span></div>'+
+      '<svg class="ci-svg" role="img" aria-label="'+d.m+': '+d.p+' percent, interval '+d.lo+' to '+d.hi+'">'+grid+
+      '<line x1="'+X(d.lo)+'" x2="'+X(d.hi)+'" y1="12" y2="12" stroke="var(--dot)" stroke-width="2" stroke-linecap="round"/>'+
+      '<circle cx="'+X(d.p)+'" cy="12" r="6" fill="var(--dot)" stroke="var(--surface)" stroke-width="2"/></svg>';
+    host.appendChild(row);
+  });
+
+  // ---------- copy buttons ----------
+  Array.prototype.forEach.call(document.querySelectorAll('.code .cp'),function(b){
+    b.onclick=function(){var t=b.parentNode.querySelector('code').innerText;
+      (navigator.clipboard?navigator.clipboard.writeText(t):Promise.reject()).then(function(){b.textContent='Copied';setTimeout(function(){b.textContent='Copy'},1400)},function(){b.textContent='Select and copy';});};
+  });
+})();
+</script>
+</body>
+</html>

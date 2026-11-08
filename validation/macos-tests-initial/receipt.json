@@ -1,0 +1,10 @@
+{
+  "passed": false,
+  "returncode": 1,
+  "timed_out": false,
+  "deadline_seconds": 420,
+  "workers": 2,
+  "wall_seconds": 122.84102816693485,
+  "python": "3.13.0",
+  "platform": "macOS-26.2-arm64-arm-64bit-Mach-O"
+}

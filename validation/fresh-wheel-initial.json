@@ -1,0 +1,289 @@
+{
+  "passed": true,
+  "version": "7.0.0",
+  "imported_from": "/private/tmp/visual-repair-v7-clean-venv/lib/python3.13/site-packages/visual_repair_lab/__init__.py",
+  "runtime_files": 67,
+  "all_source_hashes_match": true,
+  "wheel_sha256": "94a0389f9fd0595cd38df44d4ba346e3aea5e48169ad7554707eee9d24a411ef",
+  "pip_check": "No broken requirements found.",
+  "cli_v7": true,
+  "gui_asset": true,
+  "unchanged_reward": -0.025,
+  "final_result": {
+    "success": false,
+    "passed": 103,
+    "total": 109,
+    "final_revision_activated": true,
+    "chosen_verification_tests": 0
+  },
+  "files": [
+    {
+      "path": "visual_repair_lab/__init__.py",
+      "matches": true
+    },
+    {
+      "path": "visual_repair_lab/__main__.py",
+      "matches": true
+    },
+    {
+      "path": "visual_repair_lab/adaptive/__init__.py",
+      "matches": true
+    },
+    {
+      "path": "visual_repair_lab/adaptive/certify.py",
+      "matches": true
+    },
+    {
+      "path": "visual_repair_lab/adaptive/cli.py",
+      "matches": true
+    },
+    {
+      "path": "visual_repair_lab/adaptive/compiler.py",
+      "matches": true
+    },
+    {
+      "path": "visual_repair_lab/adaptive/curriculum.py",
+      "matches": true
+    },
+    {
+      "path": "visual_repair_lab/adaptive/detection_reference.py",
+      "matches": true
+    },
+    {
+      "path": "visual_repair_lab/adaptive/dsl.py",
+      "matches": true
+    },
+    {
+      "path": "visual_repair_lab/adaptive/env.py",
+      "matches": true
+    },
+    {
+      "path": "visual_repair_lab/adaptive/factory.py",
+      "matches": true
+    },
+    {
+      "path": "visual_repair_lab/adaptive/generator.py",
+      "matches": true
+    },
+    {
+      "path": "visual_repair_lab/adaptive/pool_gate.py",
+      "matches": true
+    },
+    {
+      "path": "visual_repair_lab/adaptive/private_checks.py",
+      "matches": true
+    },
+    {
+      "path": "visual_repair_lab/adaptive/private_cv.py",
+      "matches": true
+    },
+    {
+      "path": "visual_repair_lab/adaptive/probes.py",
+      "matches": true
+    },
+    {
+      "path": "visual_repair_lab/adaptive/reference.py",
+      "matches": true
+    },
+    {
+      "path": "visual_repair_lab/adaptive/scripted.py",
+      "matches": true
+    },
+    {
+      "path": "visual_repair_lab/adaptive/server.py",
+      "matches": true
+    },
+    {
+      "path": "visual_repair_lab/adaptive/teacher.py",
+      "matches": true
+    },
+    {
+      "path": "visual_repair_lab/adaptive/worker.py",
+      "matches": true
+    },
+    {
+      "path": "visual_repair_lab/cli.py",
+      "matches": true
+    },
+    {
+      "path": "visual_repair_lab/observations.py",
+      "matches": true
+    },
+    {
+      "path": "visual_repair_lab/v5/__init__.py",
+      "matches": true
+    },
+    {
+      "path": "visual_repair_lab/v5/codex_transport.py",
+      "matches": true
+    },
+    {
+      "path": "visual_repair_lab/v5/compare.py",
+      "matches": true
+    },
+    {
+      "path": "visual_repair_lab/v5/env.py",
+      "matches": true
+    },
+    {
+      "path": "visual_repair_lab/v5/generator.py",
+      "matches": true
+    },
+    {
+      "path": "visual_repair_lab/v5/server.py",
+      "matches": true
+    },
+    {
+      "path": "visual_repair_lab/v5/templates.py",
+      "matches": true
+    },
+    {
+      "path": "visual_repair_lab/v5/worker.py",
+      "matches": true
+    },
+    {
+      "path": "visual_repair_lab/v5_cli.py",
+      "matches": true
+    },
+    {
+      "path": "visual_repair_lab/v7/__init__.py",
+      "matches": true
+    },
+    {
+      "path": "visual_repair_lab/v7/benchmark.py",
+      "matches": true
+    },
+    {
+      "path": "visual_repair_lab/v7/cli.py",
+      "matches": true
+    },
+    {
+      "path": "visual_repair_lab/v7/curriculum.py",
+      "matches": true
+    },
+    {
+      "path": "visual_repair_lab/v7/env.py",
+      "matches": true
+    },
+    {
+      "path": "visual_repair_lab/v7/http.py",
+      "matches": true
+    },
+    {
+      "path": "visual_repair_lab/v7/server.py",
+      "matches": true
+    },
+    {
+      "path": "visual_repair_lab/v7/snapshot.py",
+      "matches": true
+    },
+    {
+      "path": "visual_repair_lab/v7/worker.py",
+      "matches": true
+    },
+    {
+      "path": "vision_sort/__init__.py",
+      "matches": true
+    },
+    {
+      "path": "vision_sort/visual_batch4/__init__.py",
+      "matches": true
+    },
+    {
+      "path": "vision_sort/visual_batch4/contracts.py",
+      "matches": true
+    },
+    {
+      "path": "vision_sort/visual_batch4/env.py",
+      "matches": true
+    },
+    {
+      "path": "vision_sort/visual_batch4/reference.py",
+      "matches": true
+    },
+    {
+      "path": "vision_sort/visual_batch4/tasks.py",
+      "matches": true
+    },
+    {
+      "path": "vision_sort/visual_causal/__init__.py",
+      "matches": true
+    },
+    {
+      "path": "vision_sort/visual_causal/env.py",
+      "matches": true
+    },
+    {
+      "path": "vision_sort/visual_causal/tasks.py",
+      "matches": true
+    },
+    {
+      "path": "vision_sort/visual_discovery/__init__.py",
+      "matches": true
+    },
+    {
+      "path": "vision_sort/visual_discovery/env.py",
+      "matches": true
+    },
+    {
+      "path": "vision_sort/visual_discovery/runtime.py",
+      "matches": true
+    },
+    {
+      "path": "vision_sort/visual_discovery/tasks.py",
+      "matches": true
+    },
+    {
+      "path": "vision_sort/visual_experiments/__init__.py",
+      "matches": true
+    },
+    {
+      "path": "vision_sort/visual_experiments/env.py",
+      "matches": true
+    },
+    {
+      "path": "vision_sort/visual_experiments/tasks.py",
+      "matches": true
+    },
+    {
+      "path": "vision_sort/visual_reward/__init__.py",
+      "matches": true
+    },
+    {
+      "path": "vision_sort/visual_reward/candidates.py",
+      "matches": true
+    },
+    {
+      "path": "vision_sort/visual_reward/env.py",
+      "matches": true
+    },
+    {
+      "path": "vision_sort/visual_training/__init__.py",
+      "matches": true
+    },
+    {
+      "path": "vision_sort/visual_training/env.py",
+      "matches": true
+    },
+    {
+      "path": "vision_sort/visual_training/mutants.py",
+      "matches": true
+    },
+    {
+      "path": "vision_sort/visual_training/rendering.py",
+      "matches": true
+    },
+    {
+      "path": "vision_sort/visual_training/runtime.py",
+      "matches": true
+    },
+    {
+      "path": "vision_sort/visual_training/tasks.py",
+      "matches": true
+    },
+    {
+      "path": "vision_sort/visual_training/variants.py",
+      "matches": true
+    }
+  ]
+}

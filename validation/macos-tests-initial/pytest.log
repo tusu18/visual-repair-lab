@@ -1,0 +1,67 @@
+bringing up nodes...
+bringing up nodes...
+
+......................................................F................. [ 23%]
+.....................................................................F.. [ 47%]
+.....F.................................................................. [ 71%]
+........................................................................ [ 95%]
+...............                                                          [100%]
+=================================== FAILURES ===================================
+_ test_public_contract_is_verbatim_supplied_redacted_novel_and_only_new_id_registered _
+[gw1] darwin -- Python 3.13.0 /private/tmp/visual-repair-v4-release-venv/bin/python
+
+    def test_public_contract_is_verbatim_supplied_redacted_novel_and_only_new_id_registered():
+        import gymnasium as gym
+        import visual_repair_lab
+>       assert visual_repair_lab.__version__ == '6.0.0'
+E       AssertionError: assert '7.0.0' == '6.0.0'
+E         
+E         - 6.0.0
+E         ? ^
+E         + 7.0.0
+E         ? ^
+
+tests/test_batch4_backend.py:174: AssertionError
+___________________ test_complete_offline_installation_smoke ___________________
+[gw0] darwin -- Python 3.13.0 /private/tmp/visual-repair-v4-release-venv/bin/python
+
+tmp_path = PosixPath('/private/var/folders/dm/6vc0fhx92rd1kvw6l8d72jfw0000gn/T/pytest-of-tusu18/pytest-250/popen-gw0/test_complete_offline_installa0')
+capsys = <_pytest.capture.CaptureFixture object at 0x10a64b380>
+
+    def test_complete_offline_installation_smoke(tmp_path, capsys):
+        output = tmp_path / "smoke.json"
+        assert main(["smoke", "--output", str(output)]) == 0
+        receipt = json.loads(output.read_text())
+        assert receipt == json.loads(capsys.readouterr().out)
+        assert receipt["status"] == "passed" and len(receipt["checks"]) == 18
+>       assert receipt["runtime"]["release"] == "6.0.0"
+E       AssertionError: assert '7.0.0' == '6.0.0'
+E         
+E         - 6.0.0
+E         ? ^
+E         + 7.0.0
+E         ? ^
+
+tests/test_installation.py:34: AssertionError
+______________________ test_release_and_gym_registration _______________________
+[gw0] darwin -- Python 3.13.0 /private/tmp/visual-repair-v4-release-venv/bin/python
+
+    def test_release_and_gym_registration():
+        import gymnasium as gym
+    
+        import visual_repair_lab
+    
+>       assert visual_repair_lab.__version__ == "6.0.0"
+E       AssertionError: assert '7.0.0' == '6.0.0'
+E         
+E         - 6.0.0
+E         ? ^
+E         + 7.0.0
+E         ? ^
+
+tests/test_installation.py:89: AssertionError
+=========================== short test summary info ============================
+FAILED tests/test_batch4_backend.py::test_public_contract_is_verbatim_supplied_redacted_novel_and_only_new_id_registered
+FAILED tests/test_installation.py::test_complete_offline_installation_smoke
+FAILED tests/test_installation.py::test_release_and_gym_registration - Assert...
+3 failed, 300 passed in 122.60s (0:02:02)

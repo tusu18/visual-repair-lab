@@ -1,0 +1,473 @@
+* Getting build dependencies for sdist...
+running egg_info
+writing visual_repair_lab.egg-info/PKG-INFO
+writing dependency_links to visual_repair_lab.egg-info/dependency_links.txt
+writing entry points to visual_repair_lab.egg-info/entry_points.txt
+writing requirements to visual_repair_lab.egg-info/requires.txt
+writing top-level names to visual_repair_lab.egg-info/top_level.txt
+reading manifest file 'visual_repair_lab.egg-info/SOURCES.txt'
+reading manifest template 'MANIFEST.in'
+warning: no files found matching '*.png' under directory 'docs'
+warning: no files found matching '*.json' under directory 'docs'
+warning: no files found matching '*.html' under directory 'docs'
+warning: no previously-included files matching '__pycache__' found under directory '*'
+warning: no previously-included files matching '*.pyc' found under directory '*'
+adding license file 'LICENSE'
+writing manifest file 'visual_repair_lab.egg-info/SOURCES.txt'
+* Building sdist...
+running sdist
+running egg_info
+writing visual_repair_lab.egg-info/PKG-INFO
+writing dependency_links to visual_repair_lab.egg-info/dependency_links.txt
+writing entry points to visual_repair_lab.egg-info/entry_points.txt
+writing requirements to visual_repair_lab.egg-info/requires.txt
+writing top-level names to visual_repair_lab.egg-info/top_level.txt
+reading manifest file 'visual_repair_lab.egg-info/SOURCES.txt'
+reading manifest template 'MANIFEST.in'
+warning: no files found matching '*.png' under directory 'docs'
+warning: no files found matching '*.json' under directory 'docs'
+warning: no files found matching '*.html' under directory 'docs'
+warning: no previously-included files matching '__pycache__' found under directory '*'
+warning: no previously-included files matching '*.pyc' found under directory '*'
+adding license file 'LICENSE'
+writing manifest file 'visual_repair_lab.egg-info/SOURCES.txt'
+running check
+creating visual_repair_lab-7.0.0
+creating visual_repair_lab-7.0.0/actor_client
+creating visual_repair_lab-7.0.0/banks
+creating visual_repair_lab-7.0.0/docs
+creating visual_repair_lab-7.0.0/scripts
+creating visual_repair_lab-7.0.0/tests
+creating visual_repair_lab-7.0.0/tests/fixtures
+creating visual_repair_lab-7.0.0/vision_sort
+creating visual_repair_lab-7.0.0/vision_sort/visual_batch4
+creating visual_repair_lab-7.0.0/vision_sort/visual_causal
+creating visual_repair_lab-7.0.0/vision_sort/visual_discovery
+creating visual_repair_lab-7.0.0/vision_sort/visual_experiments
+creating visual_repair_lab-7.0.0/vision_sort/visual_reward
+creating visual_repair_lab-7.0.0/vision_sort/visual_training
+creating visual_repair_lab-7.0.0/visual_repair_lab
+creating visual_repair_lab-7.0.0/visual_repair_lab.egg-info
+creating visual_repair_lab-7.0.0/visual_repair_lab/adaptive
+creating visual_repair_lab-7.0.0/visual_repair_lab/v5
+creating visual_repair_lab-7.0.0/visual_repair_lab/v7
+copying files to visual_repair_lab-7.0.0...
+copying CHANGELOG.md -> visual_repair_lab-7.0.0
+copying DELIVERY_REPORT.md -> visual_repair_lab-7.0.0
+copying Dockerfile -> visual_repair_lab-7.0.0
+copying Dockerfile.actor -> visual_repair_lab-7.0.0
+copying Dockerfile.generator -> visual_repair_lab-7.0.0
+copying LICENSE -> visual_repair_lab-7.0.0
+copying MANIFEST.in -> visual_repair_lab-7.0.0
+copying README.md -> visual_repair_lab-7.0.0
+copying SHA256SUMS.json -> visual_repair_lab-7.0.0
+copying compose.yaml -> visual_repair_lab-7.0.0
+copying pyproject.toml -> visual_repair_lab-7.0.0
+copying requirements-test.lock -> visual_repair_lab-7.0.0
+copying requirements.lock -> visual_repair_lab-7.0.0
+copying actor_client/README.md -> visual_repair_lab-7.0.0/actor_client
+copying actor_client/api_agent.py -> visual_repair_lab-7.0.0/actor_client
+copying actor_client/client.py -> visual_repair_lab-7.0.0/actor_client
+copying actor_client/codex_transport.py -> visual_repair_lab-7.0.0/actor_client
+copying actor_client/hosted_transport.py -> visual_repair_lab-7.0.0/actor_client
+copying banks/certification-catalogue.json -> visual_repair_lab-7.0.0/banks
+copying banks/generation-report.json -> visual_repair_lab-7.0.0/banks
+copying banks/train.json -> visual_repair_lab-7.0.0/banks
+copying docs/CONTROLLER.md -> visual_repair_lab-7.0.0/docs
+copying docs/FINAL_BENCHMARK_PROTOCOL.md -> visual_repair_lab-7.0.0/docs
+copying docs/GENERATOR.md -> visual_repair_lab-7.0.0/docs
+copying docs/ISOLATION.md -> visual_repair_lab-7.0.0/docs
+copying docs/LIMITATIONS_V7.md -> visual_repair_lab-7.0.0/docs
+copying docs/RESEARCH.md -> visual_repair_lab-7.0.0/docs
+copying docs/REWARDS.md -> visual_repair_lab-7.0.0/docs
+copying docs/REWARD_V7.md -> visual_repair_lab-7.0.0/docs
+copying docs/SERVER_V7.md -> visual_repair_lab-7.0.0/docs
+copying docs/USER_GUIDE_V7.md -> visual_repair_lab-7.0.0/docs
+copying scripts/benchmark_final_v6.py -> visual_repair_lab-7.0.0/scripts
+copying scripts/benchmark_gpt_adaptive.py -> visual_repair_lab-7.0.0/scripts
+copying scripts/build_final_benchmark_bank.py -> visual_repair_lab-7.0.0/scripts
+copying scripts/check_adaptive_runtime.py -> visual_repair_lab-7.0.0/scripts
+copying scripts/check_delivery.py -> visual_repair_lab-7.0.0/scripts
+copying scripts/generate_adaptive_pool.py -> visual_repair_lab-7.0.0/scripts
+copying scripts/install.sh -> visual_repair_lab-7.0.0/scripts
+copying scripts/mock_model.py -> visual_repair_lab-7.0.0/scripts
+copying scripts/report_adaptive.py -> visual_repair_lab-7.0.0/scripts
+copying scripts/run_tests.py -> visual_repair_lab-7.0.0/scripts
+copying scripts/serve_report.py -> visual_repair_lab-7.0.0/scripts
+copying scripts/smoke_http_v7.py -> visual_repair_lab-7.0.0/scripts
+copying scripts/start_lab.sh -> visual_repair_lab-7.0.0/scripts
+copying scripts/study_adaptive.py -> visual_repair_lab-7.0.0/scripts
+copying scripts/study_adaptive_prospective.py -> visual_repair_lab-7.0.0/scripts
+copying scripts/validate_adaptive_bank.py -> visual_repair_lab-7.0.0/scripts
+copying scripts/validate_v7.py -> visual_repair_lab-7.0.0/scripts
+copying tests/test_adaptive_v6.py -> visual_repair_lab-7.0.0/tests
+copying tests/test_batch4_backend.py -> visual_repair_lab-7.0.0/tests
+copying tests/test_delivery_v7.py -> visual_repair_lab-7.0.0/tests
+copying tests/test_experiment_rewards.py -> visual_repair_lab-7.0.0/tests
+copying tests/test_experiment_runtime.py -> visual_repair_lab-7.0.0/tests
+copying tests/test_experiment_tasks.py -> visual_repair_lab-7.0.0/tests
+copying tests/test_final_benchmark_accounting.py -> visual_repair_lab-7.0.0/tests
+copying tests/test_installation.py -> visual_repair_lab-7.0.0/tests
+copying tests/test_training_v4.py -> visual_repair_lab-7.0.0/tests
+copying tests/test_v5_delivery.py -> visual_repair_lab-7.0.0/tests
+copying tests/test_v6_grader_attacks.py -> visual_repair_lab-7.0.0/tests
+copying tests/test_visual_causal.py -> visual_repair_lab-7.0.0/tests
+copying tests/test_visual_reward.py -> visual_repair_lab-7.0.0/tests
+copying tests/fixtures/historical-runtime.json -> visual_repair_lab-7.0.0/tests/fixtures
+copying vision_sort/__init__.py -> visual_repair_lab-7.0.0/vision_sort
+copying vision_sort/visual_batch4/__init__.py -> visual_repair_lab-7.0.0/vision_sort/visual_batch4
+copying vision_sort/visual_batch4/contracts.py -> visual_repair_lab-7.0.0/vision_sort/visual_batch4
+copying vision_sort/visual_batch4/env.py -> visual_repair_lab-7.0.0/vision_sort/visual_batch4
+copying vision_sort/visual_batch4/reference.py -> visual_repair_lab-7.0.0/vision_sort/visual_batch4
+copying vision_sort/visual_batch4/tasks.py -> visual_repair_lab-7.0.0/vision_sort/visual_batch4
+copying vision_sort/visual_causal/__init__.py -> visual_repair_lab-7.0.0/vision_sort/visual_causal
+copying vision_sort/visual_causal/env.py -> visual_repair_lab-7.0.0/vision_sort/visual_causal
+copying vision_sort/visual_causal/tasks.py -> visual_repair_lab-7.0.0/vision_sort/visual_causal
+copying vision_sort/visual_discovery/__init__.py -> visual_repair_lab-7.0.0/vision_sort/visual_discovery
+copying vision_sort/visual_discovery/env.py -> visual_repair_lab-7.0.0/vision_sort/visual_discovery
+copying vision_sort/visual_discovery/runtime.py -> visual_repair_lab-7.0.0/vision_sort/visual_discovery
+copying vision_sort/visual_discovery/tasks.py -> visual_repair_lab-7.0.0/vision_sort/visual_discovery
+copying vision_sort/visual_experiments/__init__.py -> visual_repair_lab-7.0.0/vision_sort/visual_experiments
+copying vision_sort/visual_experiments/env.py -> visual_repair_lab-7.0.0/vision_sort/visual_experiments
+copying vision_sort/visual_experiments/tasks.py -> visual_repair_lab-7.0.0/vision_sort/visual_experiments
+copying vision_sort/visual_reward/__init__.py -> visual_repair_lab-7.0.0/vision_sort/visual_reward
+copying vision_sort/visual_reward/candidates.py -> visual_repair_lab-7.0.0/vision_sort/visual_reward
+copying vision_sort/visual_reward/env.py -> visual_repair_lab-7.0.0/vision_sort/visual_reward
+copying vision_sort/visual_training/__init__.py -> visual_repair_lab-7.0.0/vision_sort/visual_training
+copying vision_sort/visual_training/env.py -> visual_repair_lab-7.0.0/vision_sort/visual_training
+copying vision_sort/visual_training/mutants.py -> visual_repair_lab-7.0.0/vision_sort/visual_training
+copying vision_sort/visual_training/rendering.py -> visual_repair_lab-7.0.0/vision_sort/visual_training
+copying vision_sort/visual_training/runtime.py -> visual_repair_lab-7.0.0/vision_sort/visual_training
+copying vision_sort/visual_training/tasks.py -> visual_repair_lab-7.0.0/vision_sort/visual_training
+copying vision_sort/visual_training/variants.py -> visual_repair_lab-7.0.0/vision_sort/visual_training
+copying visual_repair_lab/__init__.py -> visual_repair_lab-7.0.0/visual_repair_lab
+copying visual_repair_lab/__main__.py -> visual_repair_lab-7.0.0/visual_repair_lab
+copying visual_repair_lab/cli.py -> visual_repair_lab-7.0.0/visual_repair_lab
+copying visual_repair_lab/observations.py -> visual_repair_lab-7.0.0/visual_repair_lab
+copying visual_repair_lab/v5_cli.py -> visual_repair_lab-7.0.0/visual_repair_lab
+copying visual_repair_lab.egg-info/PKG-INFO -> visual_repair_lab-7.0.0/visual_repair_lab.egg-info
+copying visual_repair_lab.egg-info/SOURCES.txt -> visual_repair_lab-7.0.0/visual_repair_lab.egg-info
+copying visual_repair_lab.egg-info/dependency_links.txt -> visual_repair_lab-7.0.0/visual_repair_lab.egg-info
+copying visual_repair_lab.egg-info/entry_points.txt -> visual_repair_lab-7.0.0/visual_repair_lab.egg-info
+copying visual_repair_lab.egg-info/requires.txt -> visual_repair_lab-7.0.0/visual_repair_lab.egg-info
+copying visual_repair_lab.egg-info/top_level.txt -> visual_repair_lab-7.0.0/visual_repair_lab.egg-info
+copying visual_repair_lab/adaptive/__init__.py -> visual_repair_lab-7.0.0/visual_repair_lab/adaptive
+copying visual_repair_lab/adaptive/certify.py -> visual_repair_lab-7.0.0/visual_repair_lab/adaptive
+copying visual_repair_lab/adaptive/cli.py -> visual_repair_lab-7.0.0/visual_repair_lab/adaptive
+copying visual_repair_lab/adaptive/compiler.py -> visual_repair_lab-7.0.0/visual_repair_lab/adaptive
+copying visual_repair_lab/adaptive/curriculum.py -> visual_repair_lab-7.0.0/visual_repair_lab/adaptive
+copying visual_repair_lab/adaptive/detection_reference.py -> visual_repair_lab-7.0.0/visual_repair_lab/adaptive
+copying visual_repair_lab/adaptive/dsl.py -> visual_repair_lab-7.0.0/visual_repair_lab/adaptive
+copying visual_repair_lab/adaptive/env.py -> visual_repair_lab-7.0.0/visual_repair_lab/adaptive
+copying visual_repair_lab/adaptive/factory.py -> visual_repair_lab-7.0.0/visual_repair_lab/adaptive
+copying visual_repair_lab/adaptive/generator.py -> visual_repair_lab-7.0.0/visual_repair_lab/adaptive
+copying visual_repair_lab/adaptive/pool_gate.py -> visual_repair_lab-7.0.0/visual_repair_lab/adaptive
+copying visual_repair_lab/adaptive/private_checks.py -> visual_repair_lab-7.0.0/visual_repair_lab/adaptive
+copying visual_repair_lab/adaptive/private_cv.py -> visual_repair_lab-7.0.0/visual_repair_lab/adaptive
+copying visual_repair_lab/adaptive/probes.py -> visual_repair_lab-7.0.0/visual_repair_lab/adaptive
+copying visual_repair_lab/adaptive/reference.py -> visual_repair_lab-7.0.0/visual_repair_lab/adaptive
+copying visual_repair_lab/adaptive/scripted.py -> visual_repair_lab-7.0.0/visual_repair_lab/adaptive
+copying visual_repair_lab/adaptive/server.py -> visual_repair_lab-7.0.0/visual_repair_lab/adaptive
+copying visual_repair_lab/adaptive/teacher.py -> visual_repair_lab-7.0.0/visual_repair_lab/adaptive
+copying visual_repair_lab/adaptive/worker.py -> visual_repair_lab-7.0.0/visual_repair_lab/adaptive
+copying visual_repair_lab/v5/__init__.py -> visual_repair_lab-7.0.0/visual_repair_lab/v5
+copying visual_repair_lab/v5/codex_transport.py -> visual_repair_lab-7.0.0/visual_repair_lab/v5
+copying visual_repair_lab/v5/compare.py -> visual_repair_lab-7.0.0/visual_repair_lab/v5
+copying visual_repair_lab/v5/env.py -> visual_repair_lab-7.0.0/visual_repair_lab/v5
+copying visual_repair_lab/v5/generator.py -> visual_repair_lab-7.0.0/visual_repair_lab/v5
+copying visual_repair_lab/v5/server.py -> visual_repair_lab-7.0.0/visual_repair_lab/v5
+copying visual_repair_lab/v5/templates.py -> visual_repair_lab-7.0.0/visual_repair_lab/v5
+copying visual_repair_lab/v5/worker.py -> visual_repair_lab-7.0.0/visual_repair_lab/v5
+copying visual_repair_lab/v7/__init__.py -> visual_repair_lab-7.0.0/visual_repair_lab/v7
+copying visual_repair_lab/v7/benchmark.py -> visual_repair_lab-7.0.0/visual_repair_lab/v7
+copying visual_repair_lab/v7/cli.py -> visual_repair_lab-7.0.0/visual_repair_lab/v7
+copying visual_repair_lab/v7/curriculum.py -> visual_repair_lab-7.0.0/visual_repair_lab/v7
+copying visual_repair_lab/v7/env.py -> visual_repair_lab-7.0.0/visual_repair_lab/v7
+copying visual_repair_lab/v7/gui.html -> visual_repair_lab-7.0.0/visual_repair_lab/v7
+copying visual_repair_lab/v7/http.py -> visual_repair_lab-7.0.0/visual_repair_lab/v7
+copying visual_repair_lab/v7/server.py -> visual_repair_lab-7.0.0/visual_repair_lab/v7
+copying visual_repair_lab/v7/snapshot.py -> visual_repair_lab-7.0.0/visual_repair_lab/v7
+copying visual_repair_lab/v7/worker.py -> visual_repair_lab-7.0.0/visual_repair_lab/v7
+copying visual_repair_lab.egg-info/SOURCES.txt -> visual_repair_lab-7.0.0/visual_repair_lab.egg-info
+Writing visual_repair_lab-7.0.0/setup.cfg
+Creating tar archive
+removing 'visual_repair_lab-7.0.0' (and everything under it)
+* Building wheel from sdist
+* Getting build dependencies for wheel...
+running egg_info
+writing visual_repair_lab.egg-info/PKG-INFO
+writing dependency_links to visual_repair_lab.egg-info/dependency_links.txt
+writing entry points to visual_repair_lab.egg-info/entry_points.txt
+writing requirements to visual_repair_lab.egg-info/requires.txt
+writing top-level names to visual_repair_lab.egg-info/top_level.txt
+reading manifest file 'visual_repair_lab.egg-info/SOURCES.txt'
+reading manifest template 'MANIFEST.in'
+warning: no files found matching '*.png' under directory 'docs'
+warning: no files found matching '*.json' under directory 'docs'
+warning: no files found matching '*.html' under directory 'docs'
+warning: no previously-included files matching '__pycache__' found under directory '*'
+warning: no previously-included files matching '*.pyc' found under directory '*'
+adding license file 'LICENSE'
+writing manifest file 'visual_repair_lab.egg-info/SOURCES.txt'
+* Building wheel...
+running bdist_wheel
+running build
+running build_py
+creating build/lib/visual_repair_lab
+copying visual_repair_lab/observations.py -> build/lib/visual_repair_lab
+copying visual_repair_lab/v5_cli.py -> build/lib/visual_repair_lab
+copying visual_repair_lab/__init__.py -> build/lib/visual_repair_lab
+copying visual_repair_lab/cli.py -> build/lib/visual_repair_lab
+copying visual_repair_lab/__main__.py -> build/lib/visual_repair_lab
+creating build/lib/vision_sort
+copying vision_sort/__init__.py -> build/lib/vision_sort
+creating build/lib/visual_repair_lab/v7
+copying visual_repair_lab/v7/worker.py -> build/lib/visual_repair_lab/v7
+copying visual_repair_lab/v7/server.py -> build/lib/visual_repair_lab/v7
+copying visual_repair_lab/v7/curriculum.py -> build/lib/visual_repair_lab/v7
+copying visual_repair_lab/v7/env.py -> build/lib/visual_repair_lab/v7
+copying visual_repair_lab/v7/benchmark.py -> build/lib/visual_repair_lab/v7
+copying visual_repair_lab/v7/__init__.py -> build/lib/visual_repair_lab/v7
+copying visual_repair_lab/v7/cli.py -> build/lib/visual_repair_lab/v7
+copying visual_repair_lab/v7/http.py -> build/lib/visual_repair_lab/v7
+copying visual_repair_lab/v7/snapshot.py -> build/lib/visual_repair_lab/v7
+creating build/lib/visual_repair_lab/v5
+copying visual_repair_lab/v5/worker.py -> build/lib/visual_repair_lab/v5
+copying visual_repair_lab/v5/server.py -> build/lib/visual_repair_lab/v5
+copying visual_repair_lab/v5/env.py -> build/lib/visual_repair_lab/v5
+copying visual_repair_lab/v5/__init__.py -> build/lib/visual_repair_lab/v5
+copying visual_repair_lab/v5/codex_transport.py -> build/lib/visual_repair_lab/v5
+copying visual_repair_lab/v5/templates.py -> build/lib/visual_repair_lab/v5
+copying visual_repair_lab/v5/generator.py -> build/lib/visual_repair_lab/v5
+copying visual_repair_lab/v5/compare.py -> build/lib/visual_repair_lab/v5
+creating build/lib/visual_repair_lab/adaptive
+copying visual_repair_lab/adaptive/scripted.py -> build/lib/visual_repair_lab/adaptive
+copying visual_repair_lab/adaptive/worker.py -> build/lib/visual_repair_lab/adaptive
+copying visual_repair_lab/adaptive/dsl.py -> build/lib/visual_repair_lab/adaptive
+copying visual_repair_lab/adaptive/server.py -> build/lib/visual_repair_lab/adaptive
+copying visual_repair_lab/adaptive/pool_gate.py -> build/lib/visual_repair_lab/adaptive
+copying visual_repair_lab/adaptive/curriculum.py -> build/lib/visual_repair_lab/adaptive
+copying visual_repair_lab/adaptive/private_cv.py -> build/lib/visual_repair_lab/adaptive
+copying visual_repair_lab/adaptive/env.py -> build/lib/visual_repair_lab/adaptive
+copying visual_repair_lab/adaptive/compiler.py -> build/lib/visual_repair_lab/adaptive
+copying visual_repair_lab/adaptive/teacher.py -> build/lib/visual_repair_lab/adaptive
+copying visual_repair_lab/adaptive/detection_reference.py -> build/lib/visual_repair_lab/adaptive
+copying visual_repair_lab/adaptive/__init__.py -> build/lib/visual_repair_lab/adaptive
+copying visual_repair_lab/adaptive/factory.py -> build/lib/visual_repair_lab/adaptive
+copying visual_repair_lab/adaptive/generator.py -> build/lib/visual_repair_lab/adaptive
+copying visual_repair_lab/adaptive/cli.py -> build/lib/visual_repair_lab/adaptive
+copying visual_repair_lab/adaptive/private_checks.py -> build/lib/visual_repair_lab/adaptive
+copying visual_repair_lab/adaptive/reference.py -> build/lib/visual_repair_lab/adaptive
+copying visual_repair_lab/adaptive/probes.py -> build/lib/visual_repair_lab/adaptive
+copying visual_repair_lab/adaptive/certify.py -> build/lib/visual_repair_lab/adaptive
+creating build/lib/vision_sort/visual_experiments
+copying vision_sort/visual_experiments/tasks.py -> build/lib/vision_sort/visual_experiments
+copying vision_sort/visual_experiments/env.py -> build/lib/vision_sort/visual_experiments
+copying vision_sort/visual_experiments/__init__.py -> build/lib/vision_sort/visual_experiments
+creating build/lib/vision_sort/visual_discovery
+copying vision_sort/visual_discovery/tasks.py -> build/lib/vision_sort/visual_discovery
+copying vision_sort/visual_discovery/env.py -> build/lib/vision_sort/visual_discovery
+copying vision_sort/visual_discovery/__init__.py -> build/lib/vision_sort/visual_discovery
+copying vision_sort/visual_discovery/runtime.py -> build/lib/vision_sort/visual_discovery
+creating build/lib/vision_sort/visual_training
+copying vision_sort/visual_training/tasks.py -> build/lib/vision_sort/visual_training
+copying vision_sort/visual_training/env.py -> build/lib/vision_sort/visual_training
+copying vision_sort/visual_training/variants.py -> build/lib/vision_sort/visual_training
+copying vision_sort/visual_training/rendering.py -> build/lib/vision_sort/visual_training
+copying vision_sort/visual_training/mutants.py -> build/lib/vision_sort/visual_training
+copying vision_sort/visual_training/__init__.py -> build/lib/vision_sort/visual_training
+copying vision_sort/visual_training/runtime.py -> build/lib/vision_sort/visual_training
+creating build/lib/vision_sort/visual_reward
+copying vision_sort/visual_reward/env.py -> build/lib/vision_sort/visual_reward
+copying vision_sort/visual_reward/__init__.py -> build/lib/vision_sort/visual_reward
+copying vision_sort/visual_reward/candidates.py -> build/lib/vision_sort/visual_reward
+creating build/lib/vision_sort/visual_batch4
+copying vision_sort/visual_batch4/tasks.py -> build/lib/vision_sort/visual_batch4
+copying vision_sort/visual_batch4/env.py -> build/lib/vision_sort/visual_batch4
+copying vision_sort/visual_batch4/__init__.py -> build/lib/vision_sort/visual_batch4
+copying vision_sort/visual_batch4/contracts.py -> build/lib/vision_sort/visual_batch4
+copying vision_sort/visual_batch4/reference.py -> build/lib/vision_sort/visual_batch4
+creating build/lib/vision_sort/visual_causal
+copying vision_sort/visual_causal/tasks.py -> build/lib/vision_sort/visual_causal
+copying vision_sort/visual_causal/env.py -> build/lib/vision_sort/visual_causal
+copying vision_sort/visual_causal/__init__.py -> build/lib/vision_sort/visual_causal
+running egg_info
+writing visual_repair_lab.egg-info/PKG-INFO
+writing dependency_links to visual_repair_lab.egg-info/dependency_links.txt
+writing entry points to visual_repair_lab.egg-info/entry_points.txt
+writing requirements to visual_repair_lab.egg-info/requires.txt
+writing top-level names to visual_repair_lab.egg-info/top_level.txt
+reading manifest file 'visual_repair_lab.egg-info/SOURCES.txt'
+reading manifest template 'MANIFEST.in'
+warning: no files found matching '*.png' under directory 'docs'
+warning: no files found matching '*.json' under directory 'docs'
+warning: no files found matching '*.html' under directory 'docs'
+warning: no previously-included files matching '__pycache__' found under directory '*'
+warning: no previously-included files matching '*.pyc' found under directory '*'
+adding license file 'LICENSE'
+writing manifest file 'visual_repair_lab.egg-info/SOURCES.txt'
+copying visual_repair_lab/v7/gui.html -> build/lib/visual_repair_lab/v7
+installing to build/bdist.macosx-15.0-arm64/wheel
+running install
+running install_lib
+creating build/bdist.macosx-15.0-arm64/wheel
+creating build/bdist.macosx-15.0-arm64/wheel/visual_repair_lab
+creating build/bdist.macosx-15.0-arm64/wheel/visual_repair_lab/v7
+copying build/lib/visual_repair_lab/v7/worker.py -> build/bdist.macosx-15.0-arm64/wheel/./visual_repair_lab/v7
+copying build/lib/visual_repair_lab/v7/server.py -> build/bdist.macosx-15.0-arm64/wheel/./visual_repair_lab/v7
+copying build/lib/visual_repair_lab/v7/curriculum.py -> build/bdist.macosx-15.0-arm64/wheel/./visual_repair_lab/v7
+copying build/lib/visual_repair_lab/v7/env.py -> build/bdist.macosx-15.0-arm64/wheel/./visual_repair_lab/v7
+copying build/lib/visual_repair_lab/v7/benchmark.py -> build/bdist.macosx-15.0-arm64/wheel/./visual_repair_lab/v7
+copying build/lib/visual_repair_lab/v7/__init__.py -> build/bdist.macosx-15.0-arm64/wheel/./visual_repair_lab/v7
+copying build/lib/visual_repair_lab/v7/cli.py -> build/bdist.macosx-15.0-arm64/wheel/./visual_repair_lab/v7
+copying build/lib/visual_repair_lab/v7/http.py -> build/bdist.macosx-15.0-arm64/wheel/./visual_repair_lab/v7
+copying build/lib/visual_repair_lab/v7/gui.html -> build/bdist.macosx-15.0-arm64/wheel/./visual_repair_lab/v7
+copying build/lib/visual_repair_lab/v7/snapshot.py -> build/bdist.macosx-15.0-arm64/wheel/./visual_repair_lab/v7
+copying build/lib/visual_repair_lab/observations.py -> build/bdist.macosx-15.0-arm64/wheel/./visual_repair_lab
+copying build/lib/visual_repair_lab/v5_cli.py -> build/bdist.macosx-15.0-arm64/wheel/./visual_repair_lab
+copying build/lib/visual_repair_lab/__init__.py -> build/bdist.macosx-15.0-arm64/wheel/./visual_repair_lab
+creating build/bdist.macosx-15.0-arm64/wheel/visual_repair_lab/v5
+copying build/lib/visual_repair_lab/v5/worker.py -> build/bdist.macosx-15.0-arm64/wheel/./visual_repair_lab/v5
+copying build/lib/visual_repair_lab/v5/server.py -> build/bdist.macosx-15.0-arm64/wheel/./visual_repair_lab/v5
+copying build/lib/visual_repair_lab/v5/env.py -> build/bdist.macosx-15.0-arm64/wheel/./visual_repair_lab/v5
+copying build/lib/visual_repair_lab/v5/__init__.py -> build/bdist.macosx-15.0-arm64/wheel/./visual_repair_lab/v5
+copying build/lib/visual_repair_lab/v5/codex_transport.py -> build/bdist.macosx-15.0-arm64/wheel/./visual_repair_lab/v5
+copying build/lib/visual_repair_lab/v5/templates.py -> build/bdist.macosx-15.0-arm64/wheel/./visual_repair_lab/v5
+copying build/lib/visual_repair_lab/v5/generator.py -> build/bdist.macosx-15.0-arm64/wheel/./visual_repair_lab/v5
+copying build/lib/visual_repair_lab/v5/compare.py -> build/bdist.macosx-15.0-arm64/wheel/./visual_repair_lab/v5
+copying build/lib/visual_repair_lab/cli.py -> build/bdist.macosx-15.0-arm64/wheel/./visual_repair_lab
+copying build/lib/visual_repair_lab/__main__.py -> build/bdist.macosx-15.0-arm64/wheel/./visual_repair_lab
+creating build/bdist.macosx-15.0-arm64/wheel/visual_repair_lab/adaptive
+copying build/lib/visual_repair_lab/adaptive/scripted.py -> build/bdist.macosx-15.0-arm64/wheel/./visual_repair_lab/adaptive
+copying build/lib/visual_repair_lab/adaptive/worker.py -> build/bdist.macosx-15.0-arm64/wheel/./visual_repair_lab/adaptive
+copying build/lib/visual_repair_lab/adaptive/dsl.py -> build/bdist.macosx-15.0-arm64/wheel/./visual_repair_lab/adaptive
+copying build/lib/visual_repair_lab/adaptive/server.py -> build/bdist.macosx-15.0-arm64/wheel/./visual_repair_lab/adaptive
+copying build/lib/visual_repair_lab/adaptive/pool_gate.py -> build/bdist.macosx-15.0-arm64/wheel/./visual_repair_lab/adaptive
+copying build/lib/visual_repair_lab/adaptive/curriculum.py -> build/bdist.macosx-15.0-arm64/wheel/./visual_repair_lab/adaptive
+copying build/lib/visual_repair_lab/adaptive/private_cv.py -> build/bdist.macosx-15.0-arm64/wheel/./visual_repair_lab/adaptive
+copying build/lib/visual_repair_lab/adaptive/env.py -> build/bdist.macosx-15.0-arm64/wheel/./visual_repair_lab/adaptive
+copying build/lib/visual_repair_lab/adaptive/compiler.py -> build/bdist.macosx-15.0-arm64/wheel/./visual_repair_lab/adaptive
+copying build/lib/visual_repair_lab/adaptive/teacher.py -> build/bdist.macosx-15.0-arm64/wheel/./visual_repair_lab/adaptive
+copying build/lib/visual_repair_lab/adaptive/detection_reference.py -> build/bdist.macosx-15.0-arm64/wheel/./visual_repair_lab/adaptive
+copying build/lib/visual_repair_lab/adaptive/__init__.py -> build/bdist.macosx-15.0-arm64/wheel/./visual_repair_lab/adaptive
+copying build/lib/visual_repair_lab/adaptive/factory.py -> build/bdist.macosx-15.0-arm64/wheel/./visual_repair_lab/adaptive
+copying build/lib/visual_repair_lab/adaptive/generator.py -> build/bdist.macosx-15.0-arm64/wheel/./visual_repair_lab/adaptive
+copying build/lib/visual_repair_lab/adaptive/cli.py -> build/bdist.macosx-15.0-arm64/wheel/./visual_repair_lab/adaptive
+copying build/lib/visual_repair_lab/adaptive/private_checks.py -> build/bdist.macosx-15.0-arm64/wheel/./visual_repair_lab/adaptive
+copying build/lib/visual_repair_lab/adaptive/reference.py -> build/bdist.macosx-15.0-arm64/wheel/./visual_repair_lab/adaptive
+copying build/lib/visual_repair_lab/adaptive/probes.py -> build/bdist.macosx-15.0-arm64/wheel/./visual_repair_lab/adaptive
+copying build/lib/visual_repair_lab/adaptive/certify.py -> build/bdist.macosx-15.0-arm64/wheel/./visual_repair_lab/adaptive
+creating build/bdist.macosx-15.0-arm64/wheel/vision_sort
+creating build/bdist.macosx-15.0-arm64/wheel/vision_sort/visual_experiments
+copying build/lib/vision_sort/visual_experiments/tasks.py -> build/bdist.macosx-15.0-arm64/wheel/./vision_sort/visual_experiments
+copying build/lib/vision_sort/visual_experiments/env.py -> build/bdist.macosx-15.0-arm64/wheel/./vision_sort/visual_experiments
+copying build/lib/vision_sort/visual_experiments/__init__.py -> build/bdist.macosx-15.0-arm64/wheel/./vision_sort/visual_experiments
+creating build/bdist.macosx-15.0-arm64/wheel/vision_sort/visual_discovery
+copying build/lib/vision_sort/visual_discovery/tasks.py -> build/bdist.macosx-15.0-arm64/wheel/./vision_sort/visual_discovery
+copying build/lib/vision_sort/visual_discovery/env.py -> build/bdist.macosx-15.0-arm64/wheel/./vision_sort/visual_discovery
+copying build/lib/vision_sort/visual_discovery/__init__.py -> build/bdist.macosx-15.0-arm64/wheel/./vision_sort/visual_discovery
+copying build/lib/vision_sort/visual_discovery/runtime.py -> build/bdist.macosx-15.0-arm64/wheel/./vision_sort/visual_discovery
+creating build/bdist.macosx-15.0-arm64/wheel/vision_sort/visual_training
+copying build/lib/vision_sort/visual_training/tasks.py -> build/bdist.macosx-15.0-arm64/wheel/./vision_sort/visual_training
+copying build/lib/vision_sort/visual_training/env.py -> build/bdist.macosx-15.0-arm64/wheel/./vision_sort/visual_training
+copying build/lib/vision_sort/visual_training/variants.py -> build/bdist.macosx-15.0-arm64/wheel/./vision_sort/visual_training
+copying build/lib/vision_sort/visual_training/rendering.py -> build/bdist.macosx-15.0-arm64/wheel/./vision_sort/visual_training
+copying build/lib/vision_sort/visual_training/mutants.py -> build/bdist.macosx-15.0-arm64/wheel/./vision_sort/visual_training
+copying build/lib/vision_sort/visual_training/__init__.py -> build/bdist.macosx-15.0-arm64/wheel/./vision_sort/visual_training
+copying build/lib/vision_sort/visual_training/runtime.py -> build/bdist.macosx-15.0-arm64/wheel/./vision_sort/visual_training
+creating build/bdist.macosx-15.0-arm64/wheel/vision_sort/visual_reward
+copying build/lib/vision_sort/visual_reward/env.py -> build/bdist.macosx-15.0-arm64/wheel/./vision_sort/visual_reward
+copying build/lib/vision_sort/visual_reward/__init__.py -> build/bdist.macosx-15.0-arm64/wheel/./vision_sort/visual_reward
+copying build/lib/vision_sort/visual_reward/candidates.py -> build/bdist.macosx-15.0-arm64/wheel/./vision_sort/visual_reward
+copying build/lib/vision_sort/__init__.py -> build/bdist.macosx-15.0-arm64/wheel/./vision_sort
+creating build/bdist.macosx-15.0-arm64/wheel/vision_sort/visual_batch4
+copying build/lib/vision_sort/visual_batch4/tasks.py -> build/bdist.macosx-15.0-arm64/wheel/./vision_sort/visual_batch4
+copying build/lib/vision_sort/visual_batch4/env.py -> build/bdist.macosx-15.0-arm64/wheel/./vision_sort/visual_batch4
+copying build/lib/vision_sort/visual_batch4/__init__.py -> build/bdist.macosx-15.0-arm64/wheel/./vision_sort/visual_batch4
+copying build/lib/vision_sort/visual_batch4/contracts.py -> build/bdist.macosx-15.0-arm64/wheel/./vision_sort/visual_batch4
+copying build/lib/vision_sort/visual_batch4/reference.py -> build/bdist.macosx-15.0-arm64/wheel/./vision_sort/visual_batch4
+creating build/bdist.macosx-15.0-arm64/wheel/vision_sort/visual_causal
+copying build/lib/vision_sort/visual_causal/tasks.py -> build/bdist.macosx-15.0-arm64/wheel/./vision_sort/visual_causal
+copying build/lib/vision_sort/visual_causal/env.py -> build/bdist.macosx-15.0-arm64/wheel/./vision_sort/visual_causal
+copying build/lib/vision_sort/visual_causal/__init__.py -> build/bdist.macosx-15.0-arm64/wheel/./vision_sort/visual_causal
+running install_egg_info
+Copying visual_repair_lab.egg-info to build/bdist.macosx-15.0-arm64/wheel/./visual_repair_lab-7.0.0-py3.13.egg-info
+running install_scripts
+creating build/bdist.macosx-15.0-arm64/wheel/visual_repair_lab-7.0.0.dist-info/WHEEL
+creating '/private/tmp/visual-repair-v7-work/dist/.tmp-jwfvu5st/visual_repair_lab-7.0.0-py3-none-any.whl' and adding 'build/bdist.macosx-15.0-arm64/wheel' to it
+adding 'vision_sort/__init__.py'
+adding 'vision_sort/visual_batch4/__init__.py'
+adding 'vision_sort/visual_batch4/contracts.py'
+adding 'vision_sort/visual_batch4/env.py'
+adding 'vision_sort/visual_batch4/reference.py'
+adding 'vision_sort/visual_batch4/tasks.py'
+adding 'vision_sort/visual_causal/__init__.py'
+adding 'vision_sort/visual_causal/env.py'
+adding 'vision_sort/visual_causal/tasks.py'
+adding 'vision_sort/visual_discovery/__init__.py'
+adding 'vision_sort/visual_discovery/env.py'
+adding 'vision_sort/visual_discovery/runtime.py'
+adding 'vision_sort/visual_discovery/tasks.py'
+adding 'vision_sort/visual_experiments/__init__.py'
+adding 'vision_sort/visual_experiments/env.py'
+adding 'vision_sort/visual_experiments/tasks.py'
+adding 'vision_sort/visual_reward/__init__.py'
+adding 'vision_sort/visual_reward/candidates.py'
+adding 'vision_sort/visual_reward/env.py'
+adding 'vision_sort/visual_training/__init__.py'
+adding 'vision_sort/visual_training/env.py'
+adding 'vision_sort/visual_training/mutants.py'
+adding 'vision_sort/visual_training/rendering.py'
+adding 'vision_sort/visual_training/runtime.py'
+adding 'vision_sort/visual_training/tasks.py'
+adding 'vision_sort/visual_training/variants.py'
+adding 'visual_repair_lab/__init__.py'
+adding 'visual_repair_lab/__main__.py'
+adding 'visual_repair_lab/cli.py'
+adding 'visual_repair_lab/observations.py'
+adding 'visual_repair_lab/v5_cli.py'
+adding 'visual_repair_lab/adaptive/__init__.py'
+adding 'visual_repair_lab/adaptive/certify.py'
+adding 'visual_repair_lab/adaptive/cli.py'
+adding 'visual_repair_lab/adaptive/compiler.py'
+adding 'visual_repair_lab/adaptive/curriculum.py'
+adding 'visual_repair_lab/adaptive/detection_reference.py'
+adding 'visual_repair_lab/adaptive/dsl.py'
+adding 'visual_repair_lab/adaptive/env.py'
+adding 'visual_repair_lab/adaptive/factory.py'
+adding 'visual_repair_lab/adaptive/generator.py'
+adding 'visual_repair_lab/adaptive/pool_gate.py'
+adding 'visual_repair_lab/adaptive/private_checks.py'
+adding 'visual_repair_lab/adaptive/private_cv.py'
+adding 'visual_repair_lab/adaptive/probes.py'
+adding 'visual_repair_lab/adaptive/reference.py'
+adding 'visual_repair_lab/adaptive/scripted.py'
+adding 'visual_repair_lab/adaptive/server.py'
+adding 'visual_repair_lab/adaptive/teacher.py'
+adding 'visual_repair_lab/adaptive/worker.py'
+adding 'visual_repair_lab/v5/__init__.py'
+adding 'visual_repair_lab/v5/codex_transport.py'
+adding 'visual_repair_lab/v5/compare.py'
+adding 'visual_repair_lab/v5/env.py'
+adding 'visual_repair_lab/v5/generator.py'
+adding 'visual_repair_lab/v5/server.py'
+adding 'visual_repair_lab/v5/templates.py'
+adding 'visual_repair_lab/v5/worker.py'
+adding 'visual_repair_lab/v7/__init__.py'
+adding 'visual_repair_lab/v7/benchmark.py'
+adding 'visual_repair_lab/v7/cli.py'
+adding 'visual_repair_lab/v7/curriculum.py'
+adding 'visual_repair_lab/v7/env.py'
+adding 'visual_repair_lab/v7/gui.html'
+adding 'visual_repair_lab/v7/http.py'
+adding 'visual_repair_lab/v7/server.py'
+adding 'visual_repair_lab/v7/snapshot.py'
+adding 'visual_repair_lab/v7/worker.py'
+adding 'visual_repair_lab-7.0.0.dist-info/licenses/LICENSE'
+adding 'visual_repair_lab-7.0.0.dist-info/METADATA'
+adding 'visual_repair_lab-7.0.0.dist-info/WHEEL'
+adding 'visual_repair_lab-7.0.0.dist-info/entry_points.txt'
+adding 'visual_repair_lab-7.0.0.dist-info/top_level.txt'
+adding 'visual_repair_lab-7.0.0.dist-info/RECORD'
+removing build/bdist.macosx-15.0-arm64/wheel
+Successfully built visual_repair_lab-7.0.0.tar.gz and visual_repair_lab-7.0.0-py3-none-any.whl

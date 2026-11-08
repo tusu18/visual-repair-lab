@@ -1,0 +1,9 @@
+FROM python@sha256:aa943ce411423c7582288f18707ff66eddcbaeb510502d747a72aeb34f30d159
+WORKDIR /generator
+COPY requirements.lock /generator/
+RUN python -m pip install --no-cache-dir -r requirements.lock
+COPY vision_sort/ /generator/vision_sort/
+COPY visual_repair_lab/ /generator/visual_repair_lab/
+RUN rm -f visual_repair_lab/adaptive/detection_reference.py visual_repair_lab/adaptive/private_cv.py visual_repair_lab/adaptive/private_checks.py visual_repair_lab/adaptive/factory.py visual_repair_lab/adaptive/server.py visual_repair_lab/adaptive/worker.py
+USER 65532:65532
+CMD ["python", "-m", "visual_repair_lab.adaptive.cli", "--help"]

@@ -1,0 +1,218 @@
+{
+  "passed": true,
+  "files": 53,
+  "rows": [
+    {
+      "path": "vision_sort/__init__.py",
+      "unchanged": true
+    },
+    {
+      "path": "vision_sort/visual_experiments/tasks.py",
+      "unchanged": true
+    },
+    {
+      "path": "vision_sort/visual_experiments/env.py",
+      "unchanged": true
+    },
+    {
+      "path": "vision_sort/visual_experiments/__init__.py",
+      "unchanged": true
+    },
+    {
+      "path": "vision_sort/visual_discovery/tasks.py",
+      "unchanged": true
+    },
+    {
+      "path": "vision_sort/visual_discovery/env.py",
+      "unchanged": true
+    },
+    {
+      "path": "vision_sort/visual_discovery/__init__.py",
+      "unchanged": true
+    },
+    {
+      "path": "vision_sort/visual_discovery/runtime.py",
+      "unchanged": true
+    },
+    {
+      "path": "vision_sort/visual_training/tasks.py",
+      "unchanged": true
+    },
+    {
+      "path": "vision_sort/visual_training/env.py",
+      "unchanged": true
+    },
+    {
+      "path": "vision_sort/visual_training/variants.py",
+      "unchanged": true
+    },
+    {
+      "path": "vision_sort/visual_training/rendering.py",
+      "unchanged": true
+    },
+    {
+      "path": "vision_sort/visual_training/mutants.py",
+      "unchanged": true
+    },
+    {
+      "path": "vision_sort/visual_training/__init__.py",
+      "unchanged": true
+    },
+    {
+      "path": "vision_sort/visual_training/runtime.py",
+      "unchanged": true
+    },
+    {
+      "path": "vision_sort/visual_reward/env.py",
+      "unchanged": true
+    },
+    {
+      "path": "vision_sort/visual_reward/__init__.py",
+      "unchanged": true
+    },
+    {
+      "path": "vision_sort/visual_reward/candidates.py",
+      "unchanged": true
+    },
+    {
+      "path": "vision_sort/visual_batch4/tasks.py",
+      "unchanged": true
+    },
+    {
+      "path": "vision_sort/visual_batch4/env.py",
+      "unchanged": true
+    },
+    {
+      "path": "vision_sort/visual_batch4/__init__.py",
+      "unchanged": true
+    },
+    {
+      "path": "vision_sort/visual_batch4/contracts.py",
+      "unchanged": true
+    },
+    {
+      "path": "vision_sort/visual_batch4/reference.py",
+      "unchanged": true
+    },
+    {
+      "path": "vision_sort/visual_causal/tasks.py",
+      "unchanged": true
+    },
+    {
+      "path": "vision_sort/visual_causal/env.py",
+      "unchanged": true
+    },
+    {
+      "path": "vision_sort/visual_causal/__init__.py",
+      "unchanged": true
+    },
+    {
+      "path": "visual_repair_lab/adaptive/scripted.py",
+      "unchanged": true
+    },
+    {
+      "path": "visual_repair_lab/adaptive/worker.py",
+      "unchanged": true
+    },
+    {
+      "path": "visual_repair_lab/adaptive/dsl.py",
+      "unchanged": true
+    },
+    {
+      "path": "visual_repair_lab/adaptive/server.py",
+      "unchanged": true
+    },
+    {
+      "path": "visual_repair_lab/adaptive/pool_gate.py",
+      "unchanged": true
+    },
+    {
+      "path": "visual_repair_lab/adaptive/curriculum.py",
+      "unchanged": true
+    },
+    {
+      "path": "visual_repair_lab/adaptive/private_cv.py",
+      "unchanged": true
+    },
+    {
+      "path": "visual_repair_lab/adaptive/env.py",
+      "unchanged": true
+    },
+    {
+      "path": "visual_repair_lab/adaptive/compiler.py",
+      "unchanged": true
+    },
+    {
+      "path": "visual_repair_lab/adaptive/teacher.py",
+      "unchanged": true
+    },
+    {
+      "path": "visual_repair_lab/adaptive/detection_reference.py",
+      "unchanged": true
+    },
+    {
+      "path": "visual_repair_lab/adaptive/__init__.py",
+      "unchanged": true
+    },
+    {
+      "path": "visual_repair_lab/adaptive/factory.py",
+      "unchanged": true
+    },
+    {
+      "path": "visual_repair_lab/adaptive/generator.py",
+      "unchanged": true
+    },
+    {
+      "path": "visual_repair_lab/adaptive/cli.py",
+      "unchanged": true
+    },
+    {
+      "path": "visual_repair_lab/adaptive/private_checks.py",
+      "unchanged": true
+    },
+    {
+      "path": "visual_repair_lab/adaptive/reference.py",
+      "unchanged": true
+    },
+    {
+      "path": "visual_repair_lab/adaptive/probes.py",
+      "unchanged": true
+    },
+    {
+      "path": "visual_repair_lab/adaptive/certify.py",
+      "unchanged": true
+    },
+    {
+      "path": "visual_repair_lab/v5/worker.py",
+      "unchanged": true
+    },
+    {
+      "path": "visual_repair_lab/v5/server.py",
+      "unchanged": true
+    },
+    {
+      "path": "visual_repair_lab/v5/env.py",
+      "unchanged": true
+    },
+    {
+      "path": "visual_repair_lab/v5/__init__.py",
+      "unchanged": true
+    },
+    {
+      "path": "visual_repair_lab/v5/codex_transport.py",
+      "unchanged": true
+    },
+    {
+      "path": "visual_repair_lab/v5/templates.py",
+      "unchanged": true
+    },
+    {
+      "path": "visual_repair_lab/v5/generator.py",
+      "unchanged": true
+    },
+    {
+      "path": "visual_repair_lab/v5/compare.py",
+      "unchanged": true
+    }
+  ]
+}

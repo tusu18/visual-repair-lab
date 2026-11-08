@@ -1,0 +1,69 @@
+{
+  "runs": [
+    {
+      "implementation": "visual_repair_lab.v7.server",
+      "episodes": 1,
+      "steps_per_episode": 8,
+      "seconds": 3.369265584042296,
+      "accepted_steps": 8,
+      "errors": 0,
+      "step_median_seconds": 0.24606039584614336,
+      "step_p95_seconds": 0.25776241603307426,
+      "step_max_seconds": 0.25776241603307426,
+      "steps_per_second": 2.3744046886330503,
+      "outcomes": [
+        {
+          "ok": true,
+          "steps": 8
+        }
+      ]
+    },
+    {
+      "implementation": "visual_repair_lab.v7.server",
+      "episodes": 8,
+      "steps_per_episode": 8,
+      "seconds": 6.377144542057067,
+      "accepted_steps": 64,
+      "errors": 0,
+      "step_median_seconds": 0.4602112289285287,
+      "step_p95_seconds": 0.6004361249506474,
+      "step_max_seconds": 0.6529293751809746,
+      "steps_per_second": 10.035839642322989,
+      "outcomes": [
+        {
+          "ok": true,
+          "steps": 8
+        },
+        {
+          "ok": true,
+          "steps": 8
+        },
+        {
+          "ok": true,
+          "steps": 8
+        },
+        {
+          "ok": true,
+          "steps": 8
+        },
+        {
+          "ok": true,
+          "steps": 8
+        },
+        {
+          "ok": true,
+          "steps": 8
+        },
+        {
+          "ok": true,
+          "steps": 8
+        },
+        {
+          "ok": true,
+          "steps": 8
+        }
+      ]
+    }
+  ],
+  "note": "Local CPU worker timings, includes process start and rendering; no model latency."
+}

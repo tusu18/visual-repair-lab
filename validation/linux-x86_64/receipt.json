@@ -1,0 +1,10 @@
+{
+  "passed": true,
+  "returncode": 0,
+  "timed_out": false,
+  "deadline_seconds": 600,
+  "workers": 2,
+  "wall_seconds": 112.17986412500005,
+  "python": "3.13.18",
+  "platform": "Linux-6.18.44-fc-v310-x86_64-with-glibc2.39"
+}

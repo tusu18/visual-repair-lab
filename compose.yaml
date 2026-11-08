@@ -1,0 +1,24 @@
+services:
+  evaluator:
+    build: .
+    ports: ["127.0.0.1:8822:8822"]
+    extra_hosts: ["host.docker.internal:host-gateway"]
+    read_only: true
+    tmpfs: ["/tmp:size=256m"]
+    volumes: ["episodes:/data"]
+    cap_drop: ["ALL"]
+    security_opt: ["no-new-privileges:true"]
+    pids_limit: 128
+    mem_limit: 2g
+  actor:
+    build:
+      context: .
+      dockerfile: Dockerfile.actor
+    profiles: ["actor"]
+    read_only: true
+    tmpfs: ["/tmp:size=128m"]
+    cap_drop: ["ALL"]
+    security_opt: ["no-new-privileges:true"]
+    command: ["python", "-c", "from client import Client; print('Actor client ready; evaluator endpoint http://evaluator:8822')"]
+volumes:
+  episodes:
